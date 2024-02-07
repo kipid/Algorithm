@@ -8,7 +8,11 @@
 var merge = function(nums1, m, nums2, n) {
     for (let i = 0, j = 0; i < m + n; i++) {
         if (j < n) {
-            if (i === m + j || nums1[i] > nums2[j]) {
+            if (i === m + j) {
+                nums1.splice(i, 1, nums2[j]);
+                j++;
+            }
+            else if (nums1[i] > nums2[j]) {
                 nums1.splice(i, 0, nums2[j]);
                 nums1.splice(m + n, 1);
                 j++;
