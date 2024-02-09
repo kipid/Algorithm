@@ -8,6 +8,6 @@ class Solution:
                 nums[k] = "_"
                 k -= 1
                 i -= 1
-            if (k == i and nums[i] != val):
+            if (k == i):
                 return k + 1
             i += 1
