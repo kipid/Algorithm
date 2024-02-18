@@ -9,6 +9,6 @@ class Solution:
                 curr_sum += num
 
             if curr_sum > max_sum:
-                max_sum = curr_sum # 모든 list int 가 minus 일 때도 제대로 동작.
+                max_sum = curr_sum
                 
         return max_sum
