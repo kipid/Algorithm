@@ -1,11 +1,12 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        if len(nums) == 1:
+        lenNums = len(nums)
+        if lenNums == 1:
             return nums[0]
         start = 0
-        endEnd = len(nums) - 1
+        endEnd = lenNums - 1
         atLeastOnePositive = False
-        while start < len(nums):
+        while start < lenNums:
             if nums[start] > 0:
                 atLeastOnePositive = True
                 break
@@ -16,8 +17,7 @@ class Solution:
                     break
                 endEnd -= 1
             maxSum = 0
-            # sumIsPositive = True
-            while start <= endEnd: # and sumIsPositive:
+            while start <= endEnd:
                 sum = 0
                 if nums[start] <= 0:
                     start += 1
@@ -26,7 +26,6 @@ class Solution:
                 while end <= endEnd:
                     sum += nums[end]
                     if sum <= 0:
-                        # sumIsPositive = False
                         start = end
                         break
                     elif sum > maxSum:
@@ -40,7 +39,7 @@ class Solution:
         else:
             maxSum = nums[0]
             start = 1
-            while start < len(nums):
+            while start < lenNums:
                 if nums[start] > maxSum:
                     maxSum = nums[start]
                 start += 1
