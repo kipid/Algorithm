@@ -32,8 +32,9 @@ class Solution:
                     elif sum > maxSum:
                         maxSum = sum
                     end += 1
-                while start > 0 and start <= endEnd and nums[start] >= 0 and nums[start - 1] >= 0:
-                    start += 1
+                if start > 0:
+                    while start <= endEnd and nums[start] >= 0 and nums[start - 1] >= 0:
+                        start += 1
                 start += 1
             return maxSum
         else:
