@@ -42,4 +42,8 @@ import glob
 for filename in glob.glob(pathname = d + "**/**", recursive = True):
 	print(f"glob: {filename}")
 
-# for currentpath, folders, files in os.walk('.'):
+print()
+
+for currentpath, folders, files in os.walk('.'):
+	for file in files:
+		print(f"walk: {file},\nos.path.join: {os.path.join(currentpath, file)}")

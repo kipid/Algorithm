@@ -1,0 +1,1 @@
+{"name": "kipid", "age": 40, "pet": "ChuChu"}
