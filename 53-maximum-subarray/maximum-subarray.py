@@ -25,17 +25,15 @@ def solve():
         # print(work.greatest_sum, file=f)
 
         # Faster O(n) solution:
-        top_sum, current_sum = -10001, 0
-        for num in nums:
-            current_sum += num
-            if current_sum > top_sum:
-                top_sum = current_sum
-            if current_sum < 0:
-                if num > top_sum:
-                    top_sum = num
-                current_sum = 0
-
-        print(top_sum, file=f)
+        maxSum, curSum = nums[0], nums[0]
+        for num in nums[1:]:
+            if curSum < 0:
+                curSum = num
+            else:
+                curSum += num
+            if curSum > maxSum:
+                maxSum = curSum
+        print(maxSum, file=f)
 
 # sys.setrecursionlimit(50000)
 solve()
