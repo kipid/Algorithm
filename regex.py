@@ -10,23 +10,26 @@ print(pattern.search("HELLO WORLD"))
 print(pattern.search("HELLOWORLD"))
 
 match = pattern.search("HELLOWORLD")
-print(match)
-print(match.group(0))
+print(match) # <re.Match object; span=(0, 10), match='HELLOWORLD'>
+print(match.group(0)) # HELLOWORLD
 # print(match.group(1))
 print()
 
 matches = pattern.finditer("HELLOWORLD")
+print(matches) # <callable_iterator object at 0x000001CBF4327E20>
+print()
 
 for m in matches:
-	print(m)
+	print(m) # <re.Match object; span=(0, 10), match='HELLOWORLD'>
+print()
 
 findall = pattern.findall("HELLOWORLD")
-print(findall)
+print(findall) # ['HELLOWORLD']
 
 pattern1 = re.compile("[^\\w]+")
 findall = pattern1.findall("This: is a pencil.")
-print(findall)
+print(findall) # [': ', ' ', ' ', '.']
 str = "This: is a pencil."
 strReplaced = re.sub(r"[^\w]+", "", str).lower()
-print(strReplaced)
-print(strReplaced[::-1])
+print(strReplaced) # thisisapencil
+print(strReplaced[::-1]) # licnepasisiht
