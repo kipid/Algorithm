@@ -10,12 +10,11 @@ class Solution:
         for i, letter in enumerate(s):
             if letter in dict_:
                 l = i - dict_[letter]
-                newStart = dict_[letter] + 1
-                j = newStart - 1
+                j = dict_[letter] - 1
                 while j >= start:
                     del dict_[s[j:j+1]]
                     j -= 1
-                start = newStart
+                start = dict_[letter] + 1
             else:
                 l += 1
                 if l > maxL:
