@@ -1,7 +1,7 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         start = result = 0
-        seen = dict()
+        seen = {}
         for i, c in enumerate(s):
             if seen.get(c, -1) >= start:
                 start = seen[c] + 1
