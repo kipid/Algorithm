@@ -1,29 +1,25 @@
 class Solution:
-    def intToRoman(self, num: int) -> str:
+    def subIntToRoman(self, num: int, digit: int, s10: str, s5: str, s1:str) -> (str, int):
         s = ""
-        s += "M" * (num // 1000)
-        num = num % 1000
-        s += "CM" * (num // 900)
-        num = num % 900
-        s += "D" * (num // 500)
-        num = num % 500
-        s += "CD" * (num // 400)
-        num = num % 400
-        s += "C" * (num // 100)
-        num = num % 100
-        s += "XC" * (num // 90)
-        num = num % 90
-        s += "L" * (num // 50)
-        num = num % 50
-        s += "XL" * (num // 40)
-        num = num % 40
-        s += "X" *(num // 10)
-        num = num % 10
-        s += "IX" * (num // 9)
-        num = num % 9
-        s += "V" * (num // 5)
-        num = num % 5
-        s += "IV" * (num // 4)
-        num = num % 4
-        s += "I" * num
-        return s
+        s += s10 * (num // (digit*10))
+        resi = num % (digit*10)
+        if resi >= 9*digit:
+            s += s1 + s10
+            resi %= 9*digit
+        elif resi >= 5*digit:
+            resi %= 5*digit
+            s += s5 + s1 * (resi // digit)
+            resi %= digit
+        elif resi >= 4*digit:
+            resi %= 4*digit
+            s += s1 + s5
+        else:
+            s += s1 * (resi // digit)
+            resi %= digit
+        return (s, resi)
+
+    def intToRoman(self, num: int) -> str:
+        (s0, num) = self.subIntToRoman(num, 100, "M", "D", "C")
+        (s1, num) = self.subIntToRoman(num, 10, "C", "L", "X")
+        (s2, num) = self.subIntToRoman(num, 1, "X", "V", "I")
+        return s0 + s1 + s2
