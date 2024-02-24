@@ -5,17 +5,17 @@ class Solution:
         resi = num % (digit*10)
         if resi >= 9*digit:
             s += s1 + s10
-            resi -= 9*digit
+            resi %= 9*digit
         elif resi >= 5*digit:
-            resi -= 5*digit
+            resi %= 5*digit
             s += s5 + s1 * (resi // digit)
-            resi = resi % digit
+            resi %= digit
         elif resi >= 4*digit:
-            resi -= 4*digit
+            resi %= 4*digit
             s += s1 + s5
         else:
             s += s1 * (resi // digit)
-            resi = resi % digit
+            resi %= digit
         return (s, resi)
 
     def intToRoman(self, num: int) -> str:
