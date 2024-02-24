@@ -35,11 +35,11 @@ pattern1 = re.compile("[^\\w]+")
 findall = pattern1.findall("This: is a pencil.")
 print(findall) # [': ', ' ', ' ', '.']
 str = "This: is a pencil_."
-strReplaced = re.sub(r"[^\w]+", "", str).lower()
+strReplaced = re.sub(r"[^\w]+", "", str).lower() # \w = [a-zA-Z0-9_]
 print(strReplaced) # thisisapencil_
 print(strReplaced[::-1]) # _licnepasisiht
 
 print()
 p = "a***"
 p = re.sub(r"\*+", "*", p)
-print(p)
+print(p) # a*
