@@ -7,8 +7,8 @@ class Solution:
 
         for i in range(1, len(s)):
             l, r = i-max_len, i+1
-            s1 = s[l-1:r] # odd length
-            s2 = s[l:r] # even length
+            s1 = s[l-1:r] # +2 check
+            s2 = s[l:r] # +1 check
 
             if l >= 1 and s1 == s1[::-1]:
                 start = l-1
