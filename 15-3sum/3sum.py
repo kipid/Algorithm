@@ -3,7 +3,9 @@ class Solution:
         res = []
         nums = sorted(nums)
         dict_nums = {}
+        dict_last_num = {}
         for i in range(len(nums)):
+            dict_last_num[nums[i]] = i
             if nums[i] == 0:
                 if 0 in dict_nums:
                     dict_nums[0].append(i)
@@ -14,9 +16,6 @@ class Solution:
         dict_first_num = {}
         for i in range(len(nums)-1, -1, -1):
             dict_first_num[nums[i]] = i
-        dict_last_num = {}
-        for i in range(len(nums)):
-            dict_last_num[nums[i]] = i
         i = 0
         while i < len(nums)-2:
             if dict_first_num[nums[i]] != i:
