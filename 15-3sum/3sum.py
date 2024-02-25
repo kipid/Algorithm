@@ -24,5 +24,8 @@ class Solution:
                     p1 += 1
                     while nums[p1] == nums[p1-1] and p1 < p2:
                         p1 += 1
+                    p2 -= 1
+                    while nums[p2] == nums[p2+1] and p1 < p2:
+                        p2 -= 1
 
         return res
