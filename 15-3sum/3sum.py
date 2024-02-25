@@ -4,6 +4,9 @@ class Solution:
         nums.sort()
 
         for i , a in enumerate(nums):
+            if a > 0: # Skip positive
+                break
+
             if i > 0 and nums[i-1] == a:
                 continue
             
