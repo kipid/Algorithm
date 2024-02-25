@@ -20,6 +20,6 @@ class Solution:
                     res.append([a,nums[p1],nums[p2]])
                     p1 += 1
                     while nums[p1] == nums[p1-1] and p1 < p2:
-                        p1 +=1
+                        p1 += 1
 
         return res
