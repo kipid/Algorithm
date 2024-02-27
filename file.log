@@ -1,0 +1,19 @@
+2024-02-26 12:43:34,639 - root - DEBUG - test
+2024-02-26 12:43:34,639 - root - DEBUG - debug message here
+2024-02-26 12:43:34,639 - root - INFO - info message here
+2024-02-26 12:43:34,639 - root - WARNING - warning message here
+2024-02-26 12:43:34,639 - root - ERROR - error message here
+2024-02-26 12:43:34,639 - root - CRITICAL - critical message here
+2024-02-26 12:44:21,777 - root - DEBUG - test
+2024-02-26 12:44:21,777 - root - DEBUG - debug message here
+2024-02-26 12:44:21,777 - root - INFO - info message here
+2024-02-26 12:44:21,777 - root - WARNING - warning message here
+2024-02-26 12:44:21,777 - root - ERROR - error message here
+2024-02-26 12:44:21,777 - root - CRITICAL - critical message here
+2024-02-26 12:44:46,433 - root - DEBUG - test
+2024-02-26 12:44:55,311 - root - DEBUG - test
+2024-02-26 12:44:55,311 - root - DEBUG - debug message here
+2024-02-26 12:44:55,311 - root - INFO - info message here
+2024-02-26 12:44:55,311 - root - WARNING - warning message here
+2024-02-26 12:44:55,311 - root - ERROR - error message here
+2024-02-26 12:44:55,311 - root - CRITICAL - critical message here
