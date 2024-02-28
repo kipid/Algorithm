@@ -20,22 +20,22 @@ class Solution:
                         return target
                 if sum_ < 0:
                     l += 1
-                    sum_ = num + nums[l] + nums[r]
-                    while l < r and sum_ <= 0:
-                        if abs(sum_) < abs(sumMin):
-                            sumMin = sum_
-                            if sumMin == 0:
-                                return target
-                        l += 1
-                        sum_ = num + nums[l] + nums[r]
+                    # sum_ = num + nums[l] + nums[r]
+                    # while l < r and sum_ <= 0:
+                    #     if abs(sum_) < abs(sumMin):
+                    #         sumMin = sum_
+                    #         if sumMin == 0:
+                    #             return target
+                    #     l += 1
+                    #     sum_ = num + nums[l] + nums[r]
                 else:
                     r -= 1
-                    sum_ = num + nums[l] + nums[r]
-                    while l < r and sum_ >= 0:
-                        if abs(sum_) < abs(sumMin):
-                            sumMin = sum_
-                            if sumMin == 0:
-                                return target
-                        r -= 1
-                        sum_ = num + nums[l] + nums[r]
+                    # sum_ = num + nums[l] + nums[r]
+                    # while l < r and sum_ >= 0:
+                    #     if abs(sum_) < abs(sumMin):
+                    #         sumMin = sum_
+                    #         if sumMin == 0:
+                    #             return target
+                    #     r -= 1
+                    #     sum_ = num + nums[l] + nums[r]
         return sumMin // 3 + target
