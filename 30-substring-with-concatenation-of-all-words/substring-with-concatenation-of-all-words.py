@@ -1,44 +1,37 @@
 class Solution:
     def findSubstring(self, s: str, words: List[str]) -> List[int]:
-        if not words or not s:
+        if len(s) == 0 or len(words) == 0 or len(words[0]) == 0:
             return []
-
-        word_length = len(words[0])
-        total_length = word_length * len(words)
-        word_count = {}
-
-        # Create a frequency map for words
+        
+        dict_ = dict()
         for word in words:
-            if word in word_count:
-                word_count[word] += 1
+            if word in dict_:
+                dict_[word] += 1
             else:
-                word_count[word] = 1
-
-        result = []
-
-        # Check each possible window in the string
-        for i in range(word_length):
-            left = i
-            count = 0
-            temp_word_count = {}
-
-            for j in range(i, len(s) - word_length + 1, word_length):
-                word = s[j:j + word_length]
-                if word in word_count:
-                    temp_word_count[word] = temp_word_count.get(word, 0) + 1
-                    count += 1
-
-                    while temp_word_count[word] > word_count[word]:
-                        left_word = s[left:left + word_length]
-                        temp_word_count[left_word] -= 1
-                        left += word_length
-                        count -= 1
-
-                    if count == len(words):
-                        result.append(left)
-                else:
-                    temp_word_count.clear()
-                    count = 0
-                    left = j + word_length
-
-        return result
+                dict_[word] = 1
+        wordsLength = len(words[0])
+        fullWordsLength = wordsLength * len(words)
+        maxIndex = len(s) - fullWordsLength
+        res = set()
+        for i in range(0, maxIndex+1):
+            if i in res:
+                continue
+            dict_copy = dict()
+            matched = True
+            k = i
+            for _ in range(len(words)):
+                key1 = s[k:k+wordsLength]
+                dict_copy[key1] = dict_copy.get(key1, 0) + 1
+                if dict_copy[key1] > dict_.get(key1, 0):
+                    matched = False
+                    break
+                k += wordsLength
+            if matched:
+                res.add(i)
+                i1 = i + wordsLength
+                while i1 <= maxIndex and s[i1-wordsLength:i1] == s[k:k+wordsLength]:
+                    res.add(i1)
+                    i1 += wordsLength
+                    k += wordsLength
+            dict_copy.clear()
+        return list(res)
