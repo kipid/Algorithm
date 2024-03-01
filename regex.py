@@ -9,6 +9,8 @@ print(pattern.search("HELLO WORLD")) # None
 print(pattern.search("HELLOWORLD")) # <re.Match object; span=(0, 10), match='HELLOWORLD'>
 print("HELLO WORLD".find("WO")) # 6
 print("HELLO WORLD".find("WOD")) # -1
+print("HELLO WORDL".find("O")) # 4
+print("HELLO WORDL".find("O", 5)) # 7
 print("HELLO WORLD".index("WO")) # 6
 # print("HELLO WORLD".index("WOD")) # ValueError: substring not found
 
