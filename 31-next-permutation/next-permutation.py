@@ -21,7 +21,7 @@ class Solution:
             i -= 1
         p = i - 1
         if p == -1:
-            nums.sort()
+            self.reverse(nums, 0)
             return
         i = len(nums) - 1
         while i > 0:
