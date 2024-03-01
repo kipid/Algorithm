@@ -26,5 +26,5 @@ class Solution:
                 k += wordsLength
             if matched:
                 res.append(i)
-            # dict_copy.clear()
-        return res
+            dict_copy.clear()
+        return res 
