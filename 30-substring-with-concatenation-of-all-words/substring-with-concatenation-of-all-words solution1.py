@@ -27,4 +27,4 @@ class Solution:
             if matched:
                 res.append(i)
             dict_copy.clear()
-        return res 
+        return res
