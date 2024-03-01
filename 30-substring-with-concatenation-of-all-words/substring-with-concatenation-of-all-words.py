@@ -1,8 +1,5 @@
 class Solution:
     def findSubstring(self, s: str, words: List[str]) -> List[int]:
-        if len(s) == 0 or len(words) == 0 or len(words[0]) == 0:
-            return []
-        
         dict_ = dict()
         for word in words:
             if word in dict_:
