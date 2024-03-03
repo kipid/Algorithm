@@ -17,7 +17,7 @@ class Solution:
                         return False
             return True
 
-        checker = [ [ {"1","2","3","4","5","6","7","8","9"} for _ in range(9) ] for _ in range(9) ]
+        checker = [ [ {"1","2","3","4","5","6","7","8","9"} for _i in range(9) ] for _j in range(9) ]
 
         def exclude(i: int, j: int, num: str) -> None:
             if board[i][j] != ".":
