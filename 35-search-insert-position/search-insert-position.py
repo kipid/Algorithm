@@ -15,8 +15,8 @@ class Solution:
             elif nums[mid] < target:
                 left = mid + 1
         
-        # if target < nums[left]:
-        #     return left
-        # else:
-        #     return left + 1
-        return left
+        if target < nums[left]:
+            return left
+        else:
+            return left + 1
+        # return left
