@@ -37,7 +37,7 @@ class Solution:
                 if board[i][j] == ".":
                     candTuples.append((len(checker[i][j]), i, j))
         candTuples.sort()
-        print(candTuples)
+        # print(candTuples)
 
         def isValid(i: int, j: int, num: str) -> bool:
             for p in range(9):
