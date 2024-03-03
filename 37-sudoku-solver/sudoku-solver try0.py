@@ -37,31 +37,50 @@ class Solution:
                 if board[i][j] == ".":
                     candTuples.append((len(checker[i][j]), i, j))
         candTuples.sort()
+        print(candTuples)
 
-        k = 0
-        while k < len(candTuples):
-            length, i, j = candTuples[k]
-            while length == 1:
-                exclude(checker[i][j].pop(), i, j)
-                k += 1
-            candTuples = []
-            for i in range(9):
-                for j in range(9):
-                    if board[i][j] == ".":
-                        candTuples.append((len(checker[i][j]), i, j))
-            k = 0
-            candTuples.sort()
+        def isValid(i: int, j: int, num: str) -> bool:
+            for p in range(9):
+                if board[p][j] == num:
+                    return False
+                if board[i][p] == num:
+                    return False
+            p0 = (i // 3) * 3
+            q0 = (j // 3) * 3
+            for p in range(3):
+                for q in range(3):
+                    if board[p0+p][q0+q] == num:
+                        return False
+            return True
+
+        def solve(k: int):
+            if k == len(candTuples):
+                return True
+            _, i, j = candTuples[k]
+            if board[i][j] == ".":
+                for num in checker[i][j]:
+                    if isValid(i, j, num):
+                        board[i][j] = num
+                        if solve(k+1):
+                            return True
+                        else:
+                            board[i][j] = "."
+                return False
+            else:
+                return solve(k+1)
+
+        solve(0)
 
 board = [
-["5","3",".",".","7",".",".",".","."],
-["6",".",".","1","9","5",".",".","."],
-[".","9","8",".",".",".",".","6","."],
-["8",".",".",".","6",".",".",".","3"],
-["4",".",".","8",".","3",".",".","1"],
-["7",".",".",".","2",".",".",".","6"],
-[".","6",".",".",".",".","2","8","."],
-[".",".",".","4","1","9",".",".","5"],
-[".",".",".",".","8",".",".","7","9"]]
+[".",".","9","7","4","8",".",".","."],
+["7",".",".",".",".",".",".",".","."],
+[".","2",".","1",".","9",".",".","."],
+[".",".","7",".",".",".","2","4","."],
+[".","6","4",".","1",".","5","9","."],
+[".","9","8",".",".",".","3",".","."],
+[".",".",".","8",".","3",".","2","."],
+[".",".",".",".",".",".",".",".","6"],
+[".",".",".","2","7","5","9",".","."]]
 
 sol = Solution()
 sol.solveSudoku(board)
