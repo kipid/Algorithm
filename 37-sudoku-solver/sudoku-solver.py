@@ -36,6 +36,8 @@ class Solution:
             for j in range(9):
                 if board[i][j] == ".":
                     candTuples.append((len(checker[i][j]), i, j))
+        if len(candTuples) == 0:
+            return
         candTuples.sort()
         # print(candTuples)
 
