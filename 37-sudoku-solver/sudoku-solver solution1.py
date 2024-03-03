@@ -19,12 +19,9 @@ class Solution:
 
         checker = [ [ set("123456789") for _i in range(9) ] for _j in range(9) ]
 
-        def exclude(checker:list[list[set[str]]], i: int, j: int, num: str) -> None:
-            if board[i][j] == ".":
-                return
+        def exclude(i: int, j: int, num: str) -> None:
             board[i][j] = num
             checker[i][j] = set(num)
-            # print(checker[i][j])
             for k in range(9):
                 checker[k][j].discard(num)
             for l in range(9):
@@ -40,7 +37,7 @@ class Solution:
         for i in range(9):
             for j in range(9):
                 if board[i][j] != ".":
-                    exclude(checker, i, j, board[i][j])
+                    exclude(i, j, board[i][j])
         print(board)
         print(checker)
 
