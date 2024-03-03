@@ -24,8 +24,12 @@ class Solution:
             checker[i][j] = set(num)
             for k in range(9):
                 checker[k][j].discard(num)
+                if len(checker[k][j]) == 1:
+                    exclude(k, j, checker[k][j].pop())
             for l in range(9):
                 checker[i][l].discard(num)
+                if len(checker[i][l]) == 1:
+                    exclude(i, l, checker[i][l].pop())
             p0 = (i // 3) * 3
             q0 = (j // 3) * 3
             for k in range(3):
@@ -33,13 +37,15 @@ class Solution:
                     p = p0 + k
                     q = q0 + l
                     checker[p][q].discard(num)
+                    if len(checker[p][q]) == 1:
+                        exclude(p, q, checker[p][q].pop())
 
         for i in range(9):
             for j in range(9):
                 if board[i][j] != ".":
                     exclude(i, j, board[i][j])
-        print(board)
-        print(checker)
+        # print(board)
+        # print(checker)
 
         candTuples = []
         for i in range(9):
@@ -47,7 +53,7 @@ class Solution:
                 if board[i][j] == ".":
                     candTuples.append((len(checker[i][j]), i, j))
         candTuples.sort()
-        print(candTuples)
+        # print(candTuples)
 
         def solve(k: int):
             if k == len(candTuples):
