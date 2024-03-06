@@ -20,9 +20,6 @@ class Solution:
             while k <= r and cand == candidates[k]:
                 k += 1
             l0 = k
-
-        print(cutCandidates)
-        print(len(cutCandidates))
         r = len(cutCandidates) - 1
         
         def pathSum(left: int, path: list[int], sumUntil: int) -> bool:
@@ -33,17 +30,20 @@ class Solution:
                 return True
             if sumUntil > target:
                 return False
+            l1 = left+1
             while left+1 <= r and target >= sumUntil + cutCandidates[left+1]:
-                pathSum(left+1, path + [cutCandidates[left+1]], sumUntil + cutCandidates[left+1])
+                if left+1 > l1 and cutCandidates[left] == cutCandidates[left+1]:
+                    left += 1
+                    continue
+                resPathSum = pathSum(left+1, path + [cutCandidates[left+1]], sumUntil + cutCandidates[left+1])
                 left += 1
-                print(f"{left = }")
             return False
 
-        for l in range(r+1):
-            pathSum(l, [cutCandidates[l]], cutCandidates[l])
+        pathSum(-1, [], 0)
         return res
 
 sol = Solution()
 candidates = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 target = 30
-sol.combinationSum2(candidates, target)
+res = sol.combinationSum2(candidates, target)
+print(res)
