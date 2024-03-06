@@ -19,6 +19,7 @@ class Solution:
                 left += 1
             return False
 
-        for l in range(r+1):
-            pathSum(l, [candidates[l]], candidates[l])
+        # for l in range(r+1):
+        #     pathSum(l, [candidates[l]], candidates[l])
+        pathSum(0, [], 0)
         return res
