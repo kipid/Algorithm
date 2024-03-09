@@ -4,6 +4,8 @@ import re
 
 pattern = re.compile("^[A-Z]+$")
 
+rev = "HELLOWORLD"[::-1]
+print(rev)
 print(pattern.search("Hello World")) # None
 print(pattern.search("HELLO WORLD")) # None
 print(pattern.search("HELLOWORLD")) # <re.Match object; span=(0, 10), match='HELLOWORLD'>
