@@ -8,7 +8,7 @@ class Solution:
                 path.append(num)
                 newSetNum1 = set(newSetNum0)
                 newSetNum1.remove(num)
-                print(f"{newSetNum1 = }, {path = }")
+                # print(f"{newSetNum1 = }, {path = }")
                 if len(newSetNum1) > 0:
                     addNum(newSetNum1, path)
                 else:
