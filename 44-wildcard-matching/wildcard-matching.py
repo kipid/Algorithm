@@ -1,21 +1,20 @@
 class Solution:
     def isMatch(self, s: str, p: str) -> bool:
-        i,j,si,m=0,0,-1,0
-        while i<len(s):
-            if j<len(p) and (s[i]==p[j] or p[j]=='?'):
-                j+=1
-                i+=1
-            elif j<len(p) and p[j]=='*':
-                si=j
-                m=i
-                j+=1
+        sIndex,pIndex,si,m=0,0,-1,0
+        while sIndex<len(s):
+            if pIndex<len(p) and (s[sIndex]==p[pIndex] or p[pIndex]=='?'):
+                pIndex+=1
+                sIndex+=1
+            elif pIndex<len(p) and p[pIndex]=='*':
+                si=pIndex
+                m=sIndex
+                pIndex+=1
             elif si!=-1:
-                j=si+1
+                pIndex=si+1
                 m+=1
-                i=m
+                sIndex=m
             else:
                 return False
-        while j<len(p) and p[j]=='*':
-            j+=1
-        return j==len(p)
-      
+        while pIndex<len(p) and p[pIndex]=='*':
+            pIndex+=1
+        return pIndex==len(p)
