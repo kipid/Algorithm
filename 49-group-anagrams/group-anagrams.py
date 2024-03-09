@@ -7,7 +7,8 @@ class Solution:
                 strsDict[sortedStr0].append(str0)
             else:
                 strsDict[sortedStr0] = [str0]
-        res = []
-        for key, str0 in strsDict.items():
-            res.append(strsDict[key])
-        return res
+        # res = []
+        # for key, str0 in strsDict.items():
+        #     res.append(strsDict[key])
+        # return res
+        return list(strsDict.values())
