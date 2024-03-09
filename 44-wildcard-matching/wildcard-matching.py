@@ -1,16 +1,16 @@
 class Solution:
     def isMatch(self, s: str, p: str) -> bool:
-        sIndex,pIndex,si,m=0,0,-1,0
+        sIndex,pIndex,starIndex,m=0,0,-1,0
         while sIndex<len(s):
             if pIndex<len(p) and (s[sIndex]==p[pIndex] or p[pIndex]=='?'):
                 pIndex+=1
                 sIndex+=1
             elif pIndex<len(p) and p[pIndex]=='*':
-                si=pIndex
+                starIndex=pIndex
                 m=sIndex
                 pIndex+=1
-            elif si!=-1:
-                pIndex=si+1
+            elif starIndex!=-1:
+                pIndex=starIndex+1
                 m+=1
                 sIndex=m
             else:
