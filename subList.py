@@ -28,6 +28,8 @@ sortedL = sorted(l, reverse=True)
 print(f"sortedL: {sortedL}")
 l.sort()
 print(l)
+l.remove(8)
+print(l)
 l = l * 2
 print(l)
 l = [1,3,2]
@@ -46,3 +48,7 @@ print(f"nums: {nums}")
 print(f"sorted(nums): {sorted(nums)}")
 print(f"nums.sort(): {nums.sort()}")
 print(f"nums: {nums}")
+
+str_ = "zckdiqoazkd"
+print(sorted(str_))
+print("".join(sorted(str_)))
