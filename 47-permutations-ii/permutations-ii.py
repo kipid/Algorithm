@@ -12,17 +12,16 @@ class Solution:
             dictNums0 = dict(dictNums)
             for num, count in dictNums0.items():
                 newDictNums = dict(dictNums0)
-                if newDictNums[num] > 0:
-                    newDictNums[num] -= 1
-                    path.append(num)
-                    if newDictNums[num] == 0:
-                        del newDictNums[num]
-                    # print(f"{newDictNums = }, {path = }")
-                    if len(newDictNums) > 0:
-                        addNum(newDictNums, path)
-                    else:
-                        res.append(list(path))
-                    path.pop()
+                newDictNums[num] -= 1
+                path.append(num)
+                if newDictNums[num] == 0:
+                    del newDictNums[num]
+                # print(f"{newDictNums = }, {path = }")
+                if len(newDictNums) > 0:
+                    addNum(newDictNums, path)
+                else:
+                    res.append(list(path))
+                path.pop()
             
         addNum(dict_, [])
         return res
