@@ -6,8 +6,6 @@ class Solution:
                 maxJumpTo = max(maxJumpTo, i+nums[i])
             return maxJumpTo
         left0, right0, n = 0, 0, len(nums)
-        # if n == 1:
-        #     return True
         while (maxJumpTo := maxJump(left0, right0)) < n-1:
             if maxJumpTo == right0:
                 return False
