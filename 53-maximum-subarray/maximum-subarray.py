@@ -7,8 +7,7 @@ def solve():
                 curSum = num
             else:
                 curSum += num
-            if curSum > maxSum:
-                maxSum = curSum
+            maxSum = max(maxSum, curSum)
         print(maxSum, file=f)
 
 solve()
