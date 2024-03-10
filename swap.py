@@ -4,3 +4,6 @@ c = 3
 d = 4
 a, b, c, d = b, c, d, a
 print(f"{a=}, {b=}, {c=}, {d=}")
+matrix =[
+[1,2]
+[3,4]]
