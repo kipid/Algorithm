@@ -4,45 +4,31 @@ class Solution:
             return [["Q"]]
         if n < 3:
             return []
-        board = [[0 for _ in range(n)] for k in range(n)]
-
-        # board[i][j] = 0 (possible), 1 (attackable), 2 (Queen)
-        # Only downward check is enough.
-        def downwardCheck(board: List[List[int]], row: int, col: int) -> List[List[int]]:
-            newBoard = [[board[i][j] for j in range(n)] for i in range(n)]
-            newBoard[row][col] = 2
-            for i in range(row+1, n):
-                if col - (i - row) >= 0:
-                    newBoard[i][col - (i - row)] = 1
-                if col + (i - row) < n:
-                    newBoard[i][col + (i - row)] = 1
-                newBoard[i][col] = 1
-            return newBoard
-        
+        board = [["."] * n for _ in range(n)]
+        colSet = set()
+        posDiag = set()
+        negDiag = set()
         res = []
-        def addQueen(board: List[List[int]], row: int) -> bool:
+
+        def addQueen(row: int):
             if row >= n:
-                ans0 = [["Q" if board[i][j] == 2 else "." for j in range(n)] for i in range(n)]
-                ans1 = []
-                for i in range(n):
-                    ans1.append("".join(ans0[i]))
-                res.append(ans1)
-                return True
-            addable = False
-            for k in range(n):
-                if board[row][k] == 0:
-                    addable = True
-                    break
-            # print(board)
-            if not addable:
-                return False
-            addable1 = False
-            for k in range(n):
-                if board[row][k] == 0:
-                    newBoard = downwardCheck(board, row, k)
-                    addable2 = addQueen(newBoard, row+1)
-                    addable1 = addable1 or addable2
-            return addable1
+                ans0 = []
+                for k in range(n):
+                    ans0.append("".join(board[k]))
+                res.append(ans0)
+                return
+            for col in range(n):
+                if col in colSet or (col-row) in posDiag or (col+row) in negDiag:
+                    continue
+                board[row][col] = "Q"
+                colSet.add(col)
+                posDiag.add(col-row)
+                negDiag.add(col+row)
+                addQueen(row+1)
+                board[row][col] = "."
+                colSet.remove(col)
+                posDiag.remove(col-row)
+                negDiag.remove(col+row)
         
-        addQueen(board, 0)
+        addQueen(0)
         return res
