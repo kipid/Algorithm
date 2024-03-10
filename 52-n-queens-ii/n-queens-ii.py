@@ -11,15 +11,17 @@ class Solution:
                 res += 1
                 return
             for col in range(n):
-                if col in colSet or (col-row) in posDiag or (col+row) in negDiag:
+                posD = col-row
+                negD = col+row
+                if col in colSet or posD in posDiag or negD in negDiag:
                     continue
                 colSet.add(col)
-                posDiag.add(col-row)
-                negDiag.add(col+row)
+                posDiag.add(posD)
+                negDiag.add(negD)
                 addQueen(row+1)
                 colSet.remove(col)
-                posDiag.remove(col-row)
-                negDiag.remove(col+row)
+                posDiag.remove(posD)
+                negDiag.remove(negD)
         
         addQueen(0)
         return res
