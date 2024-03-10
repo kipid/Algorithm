@@ -6,8 +6,8 @@ class Solution:
         negDiag = set()
 
         def addQueen(row: int):
-            nonlocal res
             if row >= n:
+                nonlocal res
                 res += 1
                 return
             for col in range(n):
