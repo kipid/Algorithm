@@ -15,7 +15,7 @@ class Solution:
             count += 1
         until = count - (k % count)
         last.next = head
-        print(f"{count = }, {until = }")
+        # print(f"{count = }, {until = }")
         for _ in range(until):
             last, head = head, head.next
         last.next = None
