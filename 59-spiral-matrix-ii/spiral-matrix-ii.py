@@ -1,19 +1,25 @@
 class Solution:
     def generateMatrix(self, n: int) -> List[List[int]]:
-        boolMap = [[True] * (n+2) for _ in range(n+2)]
-        for j in range(n+2):
-            boolMap[-1][j] = False
-            boolMap[n][j] = False
-        for i in range(n):
-            boolMap[i][-1] = False
-            boolMap[i][n] = False
-        moves = [[0,1], [1,0], [0,-1], [-1,0]]
-        res = [[0] * n for _ in range(n)]
-        count = 1
-        row, col = 0, -1
-        movesDirection = 0
-        while boolMap[row+moves[movesDirection][0]][col+moves[movesDirection][1]] or boolMap[row+moves[(movesDirection := (movesDirection+1)%4)][0]][col+moves[movesDirection][1]]:
-            res[row := row+moves[movesDirection][0]][col := col+moves[movesDirection][1]] = count
-            boolMap[row][col] = False
-            count += 1
+        res = [[0] * n for i in range(n)]
+        left, right, top, bottom = 0, n, 0, n
+        temp = 1
+        while left < right and top < bottom:
+            for i in range(left, right):
+                res[top][i] = temp
+                temp += 1
+            top += 1
+            right -= 1
+            for i in range(top, bottom):
+                res[i][right] = temp
+                temp += 1
+            # if left >= right or top >= bottom:
+            #     break
+            bottom -= 1
+            for i in range(right - 1, left - 1, -1):
+                res[bottom][i] = temp
+                temp += 1
+            for i in range(bottom - 1, top - 1, -1):
+                res[i][left] = temp
+                temp += 1
+            left += 1
         return res
