@@ -4,10 +4,9 @@ class Solution:
     def lengthOfLastWord(self, s: str) -> int:
         s = s.strip()
         count = 0
-        for i, ch in enumerate(s[::-1]):
-            if ch != " ":
-                count += 1
-            else:
+        for ch in reversed(s):
+            if ch == " ":
                 break
+            count += 1
         return count
         
