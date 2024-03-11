@@ -11,12 +11,12 @@ class Solution:
         factoList = [1]
         for i in range(1,n):
             factoList.append(i * factoList[i-1])
-        res = []
+        res = ""
         while len(listN) > 0:
             firstIndex = k // factoList[n-1]
             # print(f"{k = }")
-            res.append(listN[firstIndex])
+            res += str(listN[firstIndex])
             del listN[firstIndex]
             k = k % factoList[n-1]
             n -= 1
-        return "".join(map(str, res))
+        return res
