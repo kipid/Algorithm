@@ -25,7 +25,7 @@ print()
 
 l = [8,5,2,7,2,1,6,8,8,9,3,4,5]
 sortedL = sorted(l, reverse=True)
-print(f"sortedL: {sortedL}")
+print(f"{sortedL = }")
 l.sort()
 print(l)
 l.remove(8)
@@ -41,13 +41,32 @@ for i in range(len(l)-1, -1, -1):
 print(i)
 
 nums = [2,3,1]
-print(f"nums: {nums}")
+print(f"{nums = }")
 p = 0
 nums = nums[:p+1] + sorted(nums[p+1:])
-print(f"nums: {nums}")
-print(f"sorted(nums): {sorted(nums)}")
-print(f"nums.sort(): {nums.sort()}")
-print(f"nums: {nums}")
+print(f"{nums = }")
+print(f"{sorted(nums) = }")
+print(f"{nums.sort() = }")
+print(f"{nums = }")
+nums.insert(0, 7)
+print(f"{nums = }")
+nums.insert(0, [9, 8])
+print(f"{nums = }")
+print(f"{[10, 18] + nums = }")
+nums[:0] = [17, 12]
+print(f"nums[:0] = [17, 12] :: {nums = }")
+print(f'{"".join(map(str, nums)) = }')
+print(f'{"".join([str(num) for num in nums]) = }')
+print()
+
+import collections
+dequeue = collections.deque(nums)
+print(f"{dequeue = }")
+dequeue.appendleft(10)
+print(f"{dequeue = }")
+dequeue.appendleft((13,16))
+print(f"{dequeue = }")
+print()
 
 str_ = "zckdiqoazkd"
 print(sorted(str_))
