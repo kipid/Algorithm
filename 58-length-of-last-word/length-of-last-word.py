@@ -3,6 +3,11 @@ import re
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:
         s = s.strip()
-        pattern = re.compile("\w+$")
-        return len(pattern.search(s).group(0))
+        count = 0
+        for i, ch in enumerate(s[::-1]):
+            if ch != " ":
+                count += 1
+            else:
+                break
+        return count
         
