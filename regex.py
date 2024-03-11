@@ -9,6 +9,7 @@ print(rev)
 print(pattern.search("Hello World")) # None
 print(pattern.search("HELLO WORLD")) # None
 print(pattern.search("HELLOWORLD")) # <re.Match object; span=(0, 10), match='HELLOWORLD'>
+# print(r"^[A-Z]+$".search("HELLOWORLD")) # AttributeError: 'str' object has no attribute 'search'
 print("HELLO WORLD".find("WO")) # 6
 print("HELLO WORLD".find("WOD")) # -1
 print("HELLO WORDL".find("O")) # 4
