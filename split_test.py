@@ -3,6 +3,7 @@
 # 	print(items)
 
 str = "Hello Hello replace test Hello"
+print(f"{str.split(" ") = }")
 print(str.replace("Hello", "Halo")) # replace All.
 
 l = ['Bryan', 'Cat', 28]
