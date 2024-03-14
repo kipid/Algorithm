@@ -8,5 +8,5 @@ class Solution:
         # return self.climbStairs(n-1) + self.climbStairs(n-2)
         res = [0, 1, 2]
         for i in range(3, n+1):
-            res.append(res[i-1] + res[i-2])
+            res.append(res[-1] + res[-2])
         return res[n]
