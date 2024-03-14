@@ -33,11 +33,16 @@ print()
 
 for m in matches:
 	print(m)
+	print(f"{m.span() = }, {m.group() = }")
 """
 <re.Match object; span=(0, 3), match='HEL'>
 <re.Match object; span=(3, 6), match='LOW'>
 <re.Match object; span=(6, 9), match='ORL'>
 """
+print()
+
+for m in re.finditer("l", "hello world!"):
+	print(f"{m.span() = }, {m.group() = }")
 print()
 
 findall = pattern.findall("HELLOWORLD")
