@@ -3,7 +3,7 @@ class Solution:
         l = 0
         r = x
         while l < r:
-            mid = l + (r - l + 1) // 2
+            mid = (r + l + 1) // 2
             if mid ** 2 <= x:
                 l = mid
             else:
