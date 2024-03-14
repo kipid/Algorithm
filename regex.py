@@ -16,6 +16,9 @@ print("HELLO WORDL".find("O")) # 4
 print("HELLO WORDL".find("O", 5)) # 7
 print("HELLO WORLD".index("WO")) # 6
 # print("HELLO WORLD".index("WOD")) # ValueError: substring not found
+print(f"{re.search('test', 'TeSt', re.IGNORECASE) = }") # = <re.Match object; span=(0, 4), match='TeSt'>.group(0) = 'TeSt'
+print(f"{re.match('test', 'TeSt', re.IGNORECASE) = }") # = <re.Match object; span=(0, 4), match='TeSt'>.group(0) = 'TeSt'
+print(f"{re.sub('test', 'xxxx', 'Testing test', flags=re.IGNORECASE) = }") # = 'xxxxing xxxx'
 
 match = pattern.search("HELLOWORLD")
 print(match) # <re.Match object; span=(0, 10), match='HELLOWORLD'>
