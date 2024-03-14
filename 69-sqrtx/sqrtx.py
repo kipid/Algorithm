@@ -11,9 +11,7 @@ class Solution:
                 return findSqrt(left, mid)
             else:
                 return findSqrt(mid, right)
-        if x == 0:
-            return 0
-        cand = findSqrt(1, x)
+        cand = findSqrt(0, x)
         if (cand+1) * (cand+1) <= x:
             return cand+1
         else:
