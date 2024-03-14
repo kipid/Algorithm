@@ -32,8 +32,8 @@ person.greet()
 #How do you run your code automatically?
 
 #Determine how the script wa run using "__name__"
-print(f"__name__: {__name__}")
-print(f"__file__: {__file__}")
+print(f"__name__: {__name__}") # __main__
+print(f"__file__: {__file__}") # C:\Algorithm\imports.py
 
 #Create some code
 def test():
