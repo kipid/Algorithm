@@ -3,6 +3,7 @@ class Solution:
         if not s or not t or len(s) < len(t):
             return ""
 
+        print(f"{ord('A') = }, {ord('a') = }, {ord('Z') = }, {ord('z') = }")
         map = [0] * 128
         count = len(t)
         start = 0
