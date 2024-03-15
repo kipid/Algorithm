@@ -3,7 +3,7 @@ class Solution:
         if not s or not t or len(s) < len(t):
             return ""
 
-        print(f"{ord('A') = }, {ord('a') = }, {ord('Z') = }, {ord('z') = }")
+        # print(f"{ord('A') = }, {ord('a') = }, {ord('Z') = }, {ord('z') = }")
         map = [0] * 128
         count = len(t)
         start = 0
@@ -21,10 +21,11 @@ class Solution:
             end += 1
 
             while count == 0:
+                # print(f"{start = }, {end = }, {s[start:end] = }")
                 if end - start < min_len:
                     start_index = start
                     min_len = end - start
-
+                # print(f"{map[ord(s[start])] = }")
                 if map[ord(s[start])] == 0:
                     count += 1
                 map[ord(s[start])] += 1
