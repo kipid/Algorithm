@@ -7,7 +7,7 @@ class Solution:
         count = len(t)
         start = 0
         end = 0
-        min_len = float('inf')
+        min_len = math.inf
         start_index = 0
         # UPVOTE !
         for char in t:
@@ -29,4 +29,4 @@ class Solution:
                 map[ord(s[start])] += 1
                 start += 1
 
-        return "" if min_len == float('inf') else s[start_index:start_index + min_len]
+        return "" if min_len == math.inf else s[start_index:start_index + min_len]
