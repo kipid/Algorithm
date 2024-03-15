@@ -9,7 +9,7 @@ class Solution:
             return False
         while left < right:
             mid = (left + right + 1) // 2
-            print(f"{left = }, {right = }, {mid = }")
+            # print(f"{left = }, {right = }, {mid = }")
             if matrix[mid // n][mid % n] <= target:
                 left = mid
             else:
