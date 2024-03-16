@@ -11,3 +11,8 @@ b = 4
 
 a, b = b, a
 print(f"{a = }, {b = }")
+
+if 10 == 10 == 10:
+	print("True")
+else:
+	print("False")
