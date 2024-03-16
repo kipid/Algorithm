@@ -1,8 +1,11 @@
-from itertools import combinations
-
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
+        n = len(nums)
         res = []
-        for k in range(len(nums)+1):
-            res += combinations(nums, k)
+        def addNums(path0: List[int], maxIndex: int):
+            res.append(path0)
+            for i in range(maxIndex+1, n):
+                addNums(path0 + [nums[i]], i)
+        
+        addNums([], -1)
         return res
