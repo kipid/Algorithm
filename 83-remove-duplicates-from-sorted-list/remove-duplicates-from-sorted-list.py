@@ -8,9 +8,6 @@ class Solution:
         dummy = ListNode(next=head)
         last, curr = dummy, head
         while curr != None and (next := curr.next) != None:
-            # if curr == None or curr.next == None:
-            #     return None
-            # last, curr, next = head, head, head.next
             while next != None and curr.val != next.val:
                 last, curr, next = curr, next, next.next
             deleted = False
