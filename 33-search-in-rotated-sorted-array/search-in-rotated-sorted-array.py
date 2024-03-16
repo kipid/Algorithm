@@ -4,7 +4,7 @@ class Solution:
     
         while left < right:
             mid = (right + left + 1) // 2
-            print(f"{left = }, {mid = }, {right = }")
+            # print(f"{left = }, {mid = }, {right = }")
             if nums[mid] == target:
                 return mid
             if nums[left] < nums[mid]: # 왼쪽 부분이 정렬되어 있는 경우
@@ -17,5 +17,5 @@ class Solution:
                     left = mid + 1
                 else:
                     right = mid - 1
-        print(f"{left = }")
+        # print(f"{left = }")
         return left if nums[left%len(nums)] == target else -1
