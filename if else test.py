@@ -1,61 +1,66 @@
-if []:
+if []: # False
 	print("True")
 else:
 	print("False")
 
-if not []:
+if [[]]: # True
 	print("True")
 else:
 	print("False")
 
-if "":
+if not []: # True
 	print("True")
 else:
 	print("False")
 
-if {}:
+if "": # False
 	print("True")
 else:
 	print("False")
 
-if ():
+if {}: # False
+	print("True")
+else:
+	print("False")
+
+if (): # False
 	print("True")
 else:
 	print("False")
 
 tuple_ = ()
 
-if tuple_:
+if tuple_: # False
 	print("True")
 else:
 	print("False")
 
-if set():
+if set(): # False
 	print("True")
 else:
 	print("False")
 
-if list():
+if list(): # False
 	print("True")
 else:
 	print("False")
 
-if 0:
+if 0: # False
 	print("True")
 else:
 	print("False")
 
-if 1:
+if 1: # True
 	print("True")
 else:
 	print("False")
 
-if "0":
+if "0": # True
 	print("True")
 else:
 	print("False")
 
-if "1":
+if "1": # True
 	print("True")
 else:
 	print("False")
