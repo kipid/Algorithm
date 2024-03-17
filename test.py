@@ -16,3 +16,8 @@ if 10 == 10 == 10:
 	print("True")
 else:
 	print("False")
+
+n=5
+pin = [False for _ in range(n+2)]
+print(f"{pin = }")
+pin[-1] = pin[n] = True
