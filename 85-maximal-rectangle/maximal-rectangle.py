@@ -1,5 +1,5 @@
 class Solution:
-    def maximalRectangle(self, matrix: List[List[str]]) -> int:
+    def maximalRectangle(self, matrix: list[list[str]]) -> int:
         maxarea = 0
         dp = [0] * len(matrix[0])
         for i in range(len(matrix)):
@@ -11,7 +11,7 @@ class Solution:
         stack = [-1]
         maxarea = 0
         for i in range(len(heights)):
-            while stack[-1] != -1 and heights[stack[-1]] >= heights[i]:
+            while stack[-1] != -1 and heights[i] < heights[stack[-1]]:
                 maxarea = max(maxarea, heights[stack.pop()] * (i - stack[-1] - 1))
             stack.append(i)
         while stack[-1] != -1:
