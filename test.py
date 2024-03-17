@@ -18,6 +18,7 @@ else:
 	print("False")
 
 n=5
-pin = [False for _ in range(n+2)]
-print(f"{pin = }")
+# pin = [False for _ in range(n+2)]
+pin = [False] * (n+2)
 pin[-1] = pin[n] = True
+print(f"{pin = }")
