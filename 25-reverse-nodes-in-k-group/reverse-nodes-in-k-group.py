@@ -6,19 +6,16 @@
 class Solution:
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
         curr = head
-        lessThanK = False
-        lis = []
         for _ in range(k):
-            lis.append(curr)
             if curr == None:
-                lessThanK = True
-                break
+                return head
             curr = curr.next
-        if lessThanK:
-            return head
-        
-        temp = lis[k-1].next
-        for i in range(k-1,0,-1):
-            lis[i].next = lis[i-1]
-        lis[0].next = self.reverseKGroup(temp, k)
-        return lis[k-1]
+
+        nextHead = curr
+        prev, curr, next = None, head, head.next
+        for _ in range(k-1):
+            prev, curr, next = curr, next, next.next
+            curr.next = prev
+        curr.next = prev
+        head.next = self.reverseKGroup(nextHead, k)
+        return curr
