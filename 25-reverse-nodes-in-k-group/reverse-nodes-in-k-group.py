@@ -16,6 +16,6 @@ class Solution:
         for _ in range(k-1):
             prev, curr, next = curr, next, next.next
             curr.next = prev
-        curr.next = prev
+        # curr.next = prev
         head.next = self.reverseKGroup(nextHead, k)
         return curr
