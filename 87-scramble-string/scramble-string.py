@@ -1,5 +1,6 @@
 class Solution:
     map_ = {}
+
     def isScramble(self, s1: str, s2: str) -> bool:
         n = len(s1)
         if s1 == s2:
