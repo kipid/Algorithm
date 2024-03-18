@@ -1,5 +1,5 @@
 class Solution:
-    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+    def subsetsWithDup(self, nums: list[int]) -> set[tuple[int]]:
         res = {()}
         dict_ = dict()
         for num in nums:
@@ -8,7 +8,7 @@ class Solution:
             res1 = set(res)
             for item in res1:
                 res.update([item + (key,) * k for k in range(freq+1)])
-        res2 = []
-        for item in res:
-            res2.append(list(item))
+        # res2 = []
+        # for item in res:
+        #     res2.append(list(item))
         return res
