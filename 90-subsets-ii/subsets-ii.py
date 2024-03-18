@@ -1,11 +1,15 @@
 class Solution:
-    def subsetsWithDup(self, nums: list[int]) -> set[tuple[int]]:
-        res = {()}
-        dict_ = dict()
-        for num in nums:
-            dict_[num] = dict_.get(num, 0) + 1
-        for key, freq in dict_.items():
-            res1 = set(res)
-            for item in res1:
-                res.update([item + (key,) * k for k in range(freq+1)])
-        return res
+    def subsetsWithDup(self, nums: list[int]) -> list[list[int]]:
+        subsets = []
+        nums.sort()
+
+        def backtracking(current: list[int], k: int=0):
+            subsets.append(current)
+            # print(current)
+            for i in range(k, len(nums)):
+                if i > k and nums[i] == nums[i-1]:
+                    continue
+                backtracking(current + [nums[i]], i+1)
+
+        backtracking([])
+        return subsets
