@@ -3,6 +3,9 @@ class Solution:
 
     def isScramble(self, s1: str, s2: str) -> bool:
         n = len(s1)
+        if n == 1:
+            self.map_[s1 + s2] = (s1 == s2)
+            return s1 == s2
         if s1 == s2:
             return True
         a, b, c = [0] * 26, [0] * 26, [0] * 26
