@@ -19,7 +19,7 @@ class Solution:
                     for m in range(1, k):
                         # Check if s2[j:j+m] and s2[j+m:j+k] are scrambled versions
                         if (dp[i][j][m] and dp[i + m][j + m][k - m]) or \
-                        (dp[i][j + k - m][m] and dp[i + m][j][k - m]):
+                            (dp[i][j + k - m][m] and dp[i + m][j][k - m]):
                             dp[i][j][k] = True
                             break
 
