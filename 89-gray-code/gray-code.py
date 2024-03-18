@@ -3,7 +3,7 @@ class Solution:
         if n == 1:
             return [0,1]
         minus1 = self.grayCode(n-1)
-        highestBit = 1 << (n-1)
+        highestBit = 2**(n-1)
         return minus1 + [highestBit + minus1[i] for i in range(len(minus1)-1, -1, -1)]
         # [000,001,011,010
         # ,110,111,101,100]
