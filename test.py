@@ -22,3 +22,5 @@ n=5
 pin = [False] * (n+2)
 pin[-1] = pin[n] = True
 print(f"{pin = }")
+alphabet = "abcdefghijklmnopqrstuvwxyz"
+print(f"{len(alphabet) = }") # 26
