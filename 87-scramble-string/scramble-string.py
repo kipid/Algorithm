@@ -18,11 +18,11 @@ class Solution:
             c[ord(s2[j]) - ord('a')] += 1
             if a == b and self.isScramble(s1[:i], s2[:i]) and self.isScramble(s1[i:], s2[i:]):
                 
-                self.map_[s1 + s2] = True
+                self.map_[s2 + s1] = self.map_[s1 + s2] = True
                 return True
             if a == c and self.isScramble(s1[:i], s2[j:]) and self.isScramble(s1[i:], s2[:j]):
             
-                self.map_[s1 + s2] = True
+                self.map_[s2 + s1] = self.map_[s1 + s2] = True
                 return True
-        self.map_[s1 + s2] = False
+        self.map_[s2 + s1] = self.map_[s1 + s2] = False
         return False
