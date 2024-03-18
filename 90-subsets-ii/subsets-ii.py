@@ -8,7 +8,4 @@ class Solution:
             res1 = set(res)
             for item in res1:
                 res.update([item + (key,) * k for k in range(freq+1)])
-        # res2 = []
-        # for item in res:
-        #     res2.append(list(item))
         return res
