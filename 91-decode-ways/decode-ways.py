@@ -42,7 +42,7 @@ class Solution:
                             return 0 # incompatible 0
                         for i2, s2 in enumerate(splitBy0):
                             lastStrIndex += 1 + len(s2) # split 포함 indexing
-                            length = len(s2) # 1 0, 112 0 121221 0 12 0 (0을 바로 전과 묶음)
+                            length = len(s2) # 1 0, 112 0 121221 0 12 0 (0을 바로 전과 묶음, 7|8|9 처럼 단독처리.)
                             if i2 != len(splitBy0)-1:
                                 # print(f"{length-1 = }")
                                 res *= Fibonacci[length-1]
