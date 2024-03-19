@@ -23,8 +23,8 @@ class Solution:
                 li = []
                 if s[i0]=="0":
                     i1MaxLength = 1
-                elif int(s[i0]) > 2:
-                    i1MaxLength = 2
+                # elif int(s[i0]) > 2:
+                #     i1MaxLength = 2
                 else:
                     i1MaxLength = 3
                 li.append(s[0:i0])
@@ -34,8 +34,8 @@ class Solution:
                 for i1 in range(i0+1, min(n-1, i0+1+i1MaxLength)):
                     if s[i1]=="0":
                         i2MaxLength = 1
-                    elif int(s[i1]) > 2:
-                        i2MaxLength = 2
+                    # elif int(s[i1]) > 2:
+                    #     i2MaxLength = 2
                     else:
                         i2MaxLength = 3
                     li.append(s[i0:i1])
