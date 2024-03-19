@@ -2,6 +2,12 @@
 
 import re
 
+print(f'{re.split(r"0", "123")}') # ['123']
+print(f'{re.split(r"0", "0")}') # ['', '']
+print(f'{re.split(r"0", "")}') # ['']
+print(f'{re.split(r"0", "01230")}') # ['', '123', '']
+print()
+
 pattern = re.compile("^[A-Z]+$")
 
 rev = "HELLOWORLD"[::-1]
@@ -16,8 +22,14 @@ print("HELLO WORDL".find("O")) # 4
 print("HELLO WORDL".find("O", 5)) # 7
 print("HELLO WORLD".index("WO")) # 6
 # print("HELLO WORLD".index("WOD")) # ValueError: substring not found
+
+# re.match() is anchored at the beginning of the string, while re.search() scans the entire string.
+# If you want to match at the beginning of the string or the entire string, use re.match().
+# Otherwise, use re.search().
 print(f"{re.search('test', 'TeSt', re.IGNORECASE) = }") # = <re.Match object; span=(0, 4), match='TeSt'>.group(0) = 'TeSt'
+print(f"{re.search('test', 'ATeSt', re.IGNORECASE) = }") # = <re.Match object; span=(1, 5), match='TeSt'>
 print(f"{re.match('test', 'TeSt', re.IGNORECASE) = }") # = <re.Match object; span=(0, 4), match='TeSt'>.group(0) = 'TeSt'
+print(f"{re.match('test', 'ATeSt', re.IGNORECASE) = }") # = None
 print(f"{re.sub('test', 'xxxx', 'Testing test', flags=re.IGNORECASE) = }") # = 'xxxxing xxxx'
 
 match = pattern.search("HELLOWORLD")
