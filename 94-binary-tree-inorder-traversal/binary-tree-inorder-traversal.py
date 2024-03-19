@@ -17,5 +17,3 @@ class Solution:
             res.append(curr.val)
             curr = curr.right
         return res
-        
-        return res
