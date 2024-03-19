@@ -24,3 +24,7 @@ pin[-1] = pin[n] = True
 print(f"{pin = }")
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 print(f"{len(alphabet) = }") # 26
+
+import re
+
+print(f'{re.split(r"[7-9]", "092938423749873298743909871934819204791238998") = }')
