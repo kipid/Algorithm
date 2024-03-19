@@ -28,3 +28,11 @@ print(f"{len(alphabet) = }") # 26
 import re
 
 print(f'{re.split(r"[7-9]", "092938423749873298743909871934819204791238998") = }')
+
+s = "092938423749873298743909871934819204791238998"
+for ind, num in enumerate(s[1:],2):
+	print(f"{ind = }, {num = }")
+
+str_x = "Hello, World!"
+for index, char in enumerate(str_x, 5):
+    print(f"Index {index}: {char}")
