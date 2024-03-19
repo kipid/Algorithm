@@ -51,7 +51,7 @@ class Solution:
                                 length += 1
                             elif int(s[lastStrIndex]) < 7: # splitBy0[-1][-1] == "2"
                                 length += 1
-                        print(f"{length = }")
+                        # print(f"{length = }")
                         res *= Fibonacci[length]
                     else:
                         lastStrIndex += 1
