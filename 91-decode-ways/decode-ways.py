@@ -44,6 +44,7 @@ class Solution:
                             lastStrIndex += 1 + len(s2) # split 포함 indexing
                             length = len(s2) # 1 0, 112 0 121221 0 12 0 (0을 바로 전과 묶음)
                             if i2 != len(splitBy0)-1:
+                                # print(f"{length-1 = }")
                                 res *= Fibonacci[length-1]
                         if len(splitBy0[-1]) > 0 and splitBy0[-1][-1] != "" and lastStrIndex < len(s): # 1 0 2 ("1" or "2")
                         # no and i1 != len(splitAbove2)-1
