@@ -7,6 +7,7 @@
 memo = {}
 class Solution:
     def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
+        global memo
         def allPossibleBST(start,end):
             res = []
             if start > end:
