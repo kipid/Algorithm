@@ -4,27 +4,27 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-memo = {}
+dp = defaultdict(list)
 class Solution:
     def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
-        global memo
-        def allPossibleBST(start,end):
-            global memo
-            res = []
-            if start > end:
-                res.append(None)
-                return res
-            if (start,end) in memo:
-                return memo[(start,end)]
-            for i in range(start,end+1):
-                leftSubTrees = allPossibleBST(start,i-1)
-                rightSubTrees = allPossibleBST(i+1,end)
-
-                for left in leftSubTrees:
-                    for right in rightSubTrees:
-                        node = TreeNode(i,left,right)
-                        res.append(node)
-            
-            memo[(start,end)] = res
-            return res
-        return allPossibleBST(1,n)
+        # using explicit memoization (not using lru_cache), just recursion. we can split into left trees and right trees.
+        # we pick a node, the numbers on the left will make left trees, the numbers on the
+        # right will make right trees.
+        # we use memoization to store the intermediate results
+        global dp
+        def helper(left, right):    # construct trees using left->right numbers
+            if left > right:
+                return [None]
+            if (left, right) in dp:
+                return dp[(left, right)]
+            for i in range(left, right+1):  # i can choose right, so the range is to right+1
+                lefts = helper(left, i-1)
+                rights = helper(i+1, right)
+                for l in lefts:     # go through all the lefts and rights
+                    for r in rights:
+                        root = TreeNode(i)  # root created
+                        root.left = l
+                        root.right = r
+                        dp[(left, right)].append(root)
+            return dp[(left, right)]    # just return the stored values
+        return helper(1, n)
