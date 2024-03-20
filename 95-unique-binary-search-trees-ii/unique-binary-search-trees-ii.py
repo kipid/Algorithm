@@ -6,19 +6,24 @@
 #         self.right = right
 class Solution:
     def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
-        def buildtree(left, right):
-            if right < left:
+        # using explicit memoization (not using lru_cache), just recursion. we can split into left trees and right trees.
+        # we pick a node, the numbers on the left will make left trees, the numbers on the
+        # right will make right trees.
+        # we use memoization to store the intermediate results
+        dp = defaultdict(list)
+        def helper(left, right):    # construct trees using left->right numbers
+            if left > right:
                 return [None]
-            if left == right:
-                return [TreeNode(left)]
-            trees = []
-            for nd in range(left, right + 1):
-                ltrees = buildtree(left, nd - 1)
-                rtrees = buildtree(nd + 1, right)
-                for ltree in ltrees:
-                    for rtree in rtrees:
-                        root = TreeNode(nd, ltree, rtree)
-                        trees.append(root)
-            return trees
-        
-        return buildtree(1, n)
+            if (left, right) in dp:
+                return dp[(left, right)]
+            for i in range(left, right+1):  # i can choose right, so the range is to right+1
+                lefts = helper(left, i-1)
+                rights = helper(i+1, right)
+                for l in lefts:     # go through all the lefts and rights
+                    for r in rights:
+                        root = TreeNode(i)  # root created
+                        root.left = l
+                        root.right = r
+                        dp[(left, right)].append(root)
+            return dp[(left, right)]    # just return the stored values
+        return helper(1, n)
