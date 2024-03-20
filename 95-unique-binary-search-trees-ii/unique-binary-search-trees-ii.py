@@ -9,6 +9,7 @@ class Solution:
     def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
         global memo
         def allPossibleBST(start,end):
+            global memo
             res = []
             if start > end:
                 res.append(None)
