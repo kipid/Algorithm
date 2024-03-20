@@ -4,17 +4,25 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+memo = {}
 class Solution:
     def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
-        def dfs(begin: int, end: int) -> list[TreeNode | None]:
-            if begin == end:
-                return [None]
+        def allPossibleBST(start,end):
+            res = []
+            if start > end:
+                res.append(None)
+                return res
+            if (start,end) in memo:
+                return memo[(start,end)]
+            for i in range(start,end+1):
+                leftSubTrees = allPossibleBST(start,i-1)
+                rightSubTrees = allPossibleBST(i+1,end)
 
-            return [
-                TreeNode(root, left, right)
-                for root in range(begin, end)
-                for left in dfs(begin, root)
-                for right in dfs(root + 1, end)
-            ]
-        
-        return dfs(1, n + 1)
+                for left in leftSubTrees:
+                    for right in rightSubTrees:
+                        node = TreeNode(i,left,right)
+                        res.append(node)
+            
+            memo[(start,end)] = res
+            return res
+        return allPossibleBST(1,n)
