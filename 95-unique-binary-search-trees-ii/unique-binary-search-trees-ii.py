@@ -11,7 +11,7 @@ class Solution:
                 return [None]
 
             return [
-                TreeNode(root, left=left, right=right)
+                TreeNode(root, left, right)
                 for root in range(begin, end)
                 for left in dfs(begin, root)
                 for right in dfs(root + 1, end)
