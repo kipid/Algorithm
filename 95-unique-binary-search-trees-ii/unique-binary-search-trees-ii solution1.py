@@ -4,13 +4,14 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+dp = defaultdict(list)
 class Solution:
     def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
         # using explicit memoization (not using lru_cache), just recursion. we can split into left trees and right trees.
         # we pick a node, the numbers on the left will make left trees, the numbers on the
         # right will make right trees.
         # we use memoization to store the intermediate results
-        dp = defaultdict(list)
+        global dp
         def helper(left, right):    # construct trees using left->right numbers
             if left > right:
                 return [None]
