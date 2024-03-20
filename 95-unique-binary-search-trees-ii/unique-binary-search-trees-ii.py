@@ -9,6 +9,8 @@ class Solution:
         def buildtree(left, right):
             if right < left:
                 return [None]
+            if left == right:
+                return [TreeNode(left)]
             trees = []
             for nd in range(left, right + 1):
                 ltrees = buildtree(left, nd - 1)
