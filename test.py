@@ -36,3 +36,5 @@ for ind, num in enumerate(s[1:],2):
 str_x = "Hello, World!"
 for index, char in enumerate(str_x, 5):
     print(f"Index {index}: {char}")
+
+print(f"{list(str_x).pop() = }")
