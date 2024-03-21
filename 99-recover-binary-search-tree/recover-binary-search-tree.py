@@ -5,6 +5,9 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    prev = None
+    first = None
+    second = None
     def recoverTree(self, root: Optional[TreeNode]) -> None:
         """
         Do not return anything, modify root in-place instead.
@@ -21,6 +24,6 @@ class Solution:
 
             inorderBST(root.right)
         
-        self.first = self.second = self.prev = None
+        # self.first = self.second = self.prev = None
         inorderBST(root)
         self.first.val, self.second.val = self.second.val, self.first.val
