@@ -13,7 +13,8 @@ class Solution:
         Do not return anything, modify root in-place instead.
         """
         def inorderBST(root):
-            if not root:    return
+            if not root:
+                return
             
             inorderBST(root.left)
 
