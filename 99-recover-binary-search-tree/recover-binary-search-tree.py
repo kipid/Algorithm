@@ -9,20 +9,18 @@ class Solution:
         """
         Do not return anything, modify root in-place instead.
         """
-        inorder_list = []
-        def inOrder(root):
-            if root == None:
-                return
-            inOrder(root.left)
-            inorder_list.append(root)
-            inOrder(root.right)
+        def inorderBST(root):
+            if not root:    return
+            
+            inorderBST(root.left)
 
-        inOrder(root)
+            if self.prev and self.prev.val > root.val:
+                if not self.first:  self.first = self.prev
+                self.second = root
+            self.prev = root
 
-        # 4, 2, 3, 1
-        misplaced = []
-        for i in range(1, len(inorder_list)):
-            if inorder_list[i-1].val > inorder_list[i].val:
-                misplaced.append(inorder_list[i-1])
-                misplaced.append(inorder_list[i])
-        misplaced[0].val, misplaced[-1].val = misplaced[-1].val, misplaced[0].val
+            inorderBST(root.right)
+        
+        self.first = self.second = self.prev = None
+        inorderBST(root)
+        self.first.val, self.second.val = self.second.val, self.first.val
