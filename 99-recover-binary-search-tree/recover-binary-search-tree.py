@@ -24,6 +24,6 @@ class Solution:
 
             inorderBST(root.right)
         
-        # self.first = self.second = self.prev = None
+        self.first = self.second = self.prev = None
         inorderBST(root)
         self.first.val, self.second.val = self.second.val, self.first.val
