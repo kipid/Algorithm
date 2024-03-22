@@ -38,3 +38,5 @@ for index, char in enumerate(str_x, 5):
     print(f"Index {index}: {char}")
 
 print(f"{list(str_x).pop() = }")
+import math
+print(f"{math.log2(8) = }")
