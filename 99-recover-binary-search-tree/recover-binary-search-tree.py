@@ -10,15 +10,14 @@ class Solution:
         Do not return anything, modify root in-place instead.
         """
         def inorderBST(root):
-            if not root:
-                return
-            inorderBST(root.left)
-            if self.prev and self.prev.val > root.val:
-                if not self.first:
-                    self.first = self.prev
-                self.second = root
-            self.prev = root
-            inorderBST(root.right)
+            if root:
+                inorderBST(root.left)
+                if self.prev and self.prev.val > root.val:
+                    if not self.first:
+                        self.first = self.prev
+                    self.second = root
+                self.prev = root
+                inorderBST(root.right)
 
         self.first = self.second = self.prev = None
         inorderBST(root)
