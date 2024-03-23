@@ -12,13 +12,14 @@ class Solution:
         def inorderBST(root):
             if root:
                 inorderBST(root.left)
-                if self.prev and self.prev.val > root.val:
+                if self.prev.val > root.val:
                     if not self.first:
                         self.first = self.prev
                     self.second = root
                 self.prev = root
                 inorderBST(root.right)
 
-        self.first = self.second = self.prev = None
+        self.prev = TreeNode(-math.inf)
+        self.first = self.second = None
         inorderBST(root)
         self.first.val, self.second.val = self.second.val, self.first.val
