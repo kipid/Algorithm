@@ -4,20 +4,21 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+memos = defaultdict(list)
+def helper(left, right):    # construct trees using left->right numbers
+    if left > right:
+        return [None]
+    if (left, right) in memos:
+        return memos[(left, right)]
+    for i in range(left, right+1):  # i can choose right, so the range is to right+1
+        lefts = helper(left, i-1)
+        rights = helper(i+1, right)
+        for l in lefts:     # go through all the lefts and rights
+            for r in rights:
+                root = TreeNode(i, l, r)  # root created
+                memos[(left, right)].append(root)
+    return memos[(left, right)]    # just return the stored values
+helper(1, 8)
 class Solution:
     def generateTrees(self, n: int) -> list[Optional[TreeNode]]:
-        @lru_cache
-        def buildtree(left, right):
-            if right < left:
-                return [None]
-            trees = []
-            for nd in range(left, right + 1):
-                ltrees = buildtree(left, nd - 1)
-                rtrees = buildtree(nd + 1, right)
-                for ltree in ltrees:
-                    for rtree in rtrees:
-                        root = TreeNode(nd, ltree, rtree)
-                        trees.append(root)
-            return trees
-
-        return buildtree(1, n)
+        return helper(1, n)
