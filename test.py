@@ -40,3 +40,4 @@ for index, char in enumerate(str_x, 5):
 print(f"{list(str_x).pop() = }")
 import math
 print(f"{math.log2(8) = }")
+print(f"{math.ceil(2.1049) = }")
