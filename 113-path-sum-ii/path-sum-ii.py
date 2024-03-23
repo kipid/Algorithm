@@ -8,16 +8,21 @@ class Solution:
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
         if not root:
             return []
+
         res = []
-        def rootToLeaf(node: TreeNode, sumUntil: int, path: List[int]):
-            sumUntil += node.val
-            path = path + [node.val]
-            if not node.left and not node.right and sumUntil == targetSum:
-                res.append(path)
-            if node.left:
-                rootToLeaf(node.left, sumUntil, path)
-            if node.right:
-                rootToLeaf(node.right, sumUntil, path)
+        path = []
+        def dfs(cur, total):
+            total += cur.val
+            path.append(cur.val)
+
+            if not cur.left and not cur.right and total == targetSum:
+                res.append(path[:])
+            
+            if cur.left:
+                dfs(cur.left, total)
+            if cur.right:
+                dfs(cur.right, total)
+            path.pop()
         
-        rootToLeaf(root, 0, [])
+        dfs(root, 0)
         return res
