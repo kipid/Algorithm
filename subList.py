@@ -1,3 +1,11 @@
+res = []
+li = [0,1,2,3,4,5,6,7,8,9]
+res.append(li)
+res.append(li[:]) # shallow copy of li
+li.pop(0)
+li.pop(0)
+li.pop(1)
+print(res) # [[2, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]]
 li = [0,1,2,3,4,5,6,7,8,9]
 print(li) # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 print(li[:]) # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
