@@ -6,6 +6,7 @@
 #         self.right = right
 class Solution:
     def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
+        @lru_cache
         def buildTree(begin: int, end: int) -> list[TreeNode | None]:
             if begin == end:
                 return [None]
