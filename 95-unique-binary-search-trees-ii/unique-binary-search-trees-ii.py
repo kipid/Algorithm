@@ -20,7 +20,7 @@ def helper(left, right):    # construct trees using left->right numbers
                 root.right = r
                 dp[(left, right)].append(root)
     return dp[(left, right)]    # just return the stored values
-helper(1, 6)
+helper(1, 8)
 class Solution:
     def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
         # using explicit memoization (not using lru_cache), just recursion. we can split into left trees and right trees.
