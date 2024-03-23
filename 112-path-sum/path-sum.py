@@ -9,8 +9,6 @@ class Solution:
         if not root:
             return False
         
-        stack = [root]
-        nodes = [[root]]
         res = False
         def rootToLeaf(node: TreeNode, sumUntil: int) -> bool:
             sumUntil += node.val
