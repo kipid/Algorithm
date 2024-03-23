@@ -9,22 +9,15 @@ class Solution:
         if not root:
             return 0
 
-        nodes = [[root]]
-        minDepth = 1
-        def helper(preNodes: TreeNode) -> bool:
-            nextNodes = []
-            for preNode in preNodes:
-                if not preNode.left and not preNode.right:
-                    return False
-                if preNode.left:
-                    nextNodes.append(preNode.left)
-                if preNode.right:
-                    nextNodes.append(preNode.right)
-            nodes.append(nextNodes)
-            nonlocal minDepth
-            minDepth += 1
-            return True
-        
-        while helper(nodes[-1]):
-            pass
-        return minDepth
+        queue = [(root, 1)]
+
+        while queue:
+            node, level = queue.pop(0)
+            if not node.left and not node.right:
+                return level
+       
+            if node.left:
+                queue.append((node.left, level + 1))
+
+            if node.right:
+                queue.append((node.right, level + 1))
