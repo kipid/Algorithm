@@ -12,14 +12,14 @@ class Solution:
         nodes = [[root]]
 
         def nextLevel(preNodes: List[TreeNode]) -> bool:
-            levelNodes = []
+            nextNodes = []
             for preNode in preNodes:
                 if preNode.left:
-                    levelNodes.append(preNode.left)
+                    nextNodes.append(preNode.left)
                 if preNode.right:
-                    levelNodes.append(preNode.right)
-            if len(levelNodes) > 0:
-                nodes.append(levelNodes)
+                    nextNodes.append(preNode.right)
+            if len(nextNodes) > 0:
+                nodes.append(nextNodes)
                 return True
             return False
         
