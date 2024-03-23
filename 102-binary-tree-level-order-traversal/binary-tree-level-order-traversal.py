@@ -23,8 +23,8 @@ class Solution:
             if len(nodeValues) > 0:
                 res.append(nodeValues)
                 nodesRes.append(nodes)
-                return nodes
-            return None
-        while addLevel(nodesRes[-1]) != None:
+                return True
+            return False
+        while addLevel(nodesRes[-1]):
             pass
         return res
