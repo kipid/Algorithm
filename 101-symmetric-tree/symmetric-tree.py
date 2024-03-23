@@ -6,8 +6,6 @@
 #         self.right = right
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        if not root.left and not root.right:
-            return True
         def isSym(left: Optional[TreeNode], right: Optional[TreeNode]) -> bool:
             if not left and not right:
                 return True
