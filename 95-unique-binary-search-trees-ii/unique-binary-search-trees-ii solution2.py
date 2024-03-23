@@ -6,15 +6,15 @@
 #         self.right = right
 class Solution:
     def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
-        def dfs(begin: int, end: int) -> list[TreeNode | None]:
+        def buildTree(begin: int, end: int) -> list[TreeNode | None]:
             if begin == end:
                 return [None]
 
             return [
-                TreeNode(root, left=left, right=right)
+                TreeNode(root, left, right)
                 for root in range(begin, end)
-                for left in dfs(begin, root)
-                for right in dfs(root + 1, end)
+                    for left in buildTree(begin, root)
+                        for right in buildTree(root + 1, end)
             ]
         
-        return dfs(1, n + 1)
+        return buildTree(1, n + 1)
