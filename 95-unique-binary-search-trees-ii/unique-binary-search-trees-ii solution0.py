@@ -1,11 +1,45 @@
+from typing import Optional
+from functools import lru_cache
+
 # Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+class TreeNode:
+    def __init__(self, val: int=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+    def toList(self, preNodes):
+        nextValues = []
+        nextNodes = []
+        for preNode in preNodes:
+            if preNode.left:
+                nextValues.append(preNode.left.val)
+                nextNodes.append(preNode.left)
+            if preNode.right:
+                nextValues.append(preNode.right.val)
+                nextNodes.append(preNode.right)
+        if len(nextNodes) > 0:
+            self.values.append(nextValues)
+            self.nodes.append(nextNodes)
+            self.toList(self.nodes[-1])
+
+    def inorder(self, root, str_: str) -> str:
+        if root:
+            self.inorder(root.left, str_)
+            self.str_ += str(root.val) + " "
+            self.inorder(root.right, str_)
+        return self.str_
+
+    def __repr__(self):
+        self.values = [[self.val]]
+        self.nodes = [[self]]
+        self.toList(self.nodes[-1])
+        self.str_ = ""
+        return f"{self.values}\ninorder: {self.inorder(self, '')}"
+
 class Solution:
-    def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
+    def generateTrees(self, n: int) -> list[Optional[TreeNode]]:
+        @lru_cache
         def buildtree(left, right):
             if right < left:
                 return [None]
@@ -20,3 +54,8 @@ class Solution:
             return trees
         
         return buildtree(1, n)
+
+sol = Solution()
+lis = sol.generateTrees(11)
+for li in lis:
+    print(f"{li = }")
