@@ -15,7 +15,7 @@
 function inorderTraversal(root: TreeNode | null): number[] {
     let res = []
 
-    let inorder = function (root) {
+    let inorder = function (root: TreeNode | null) {
         if (!root) {
             return
         }
