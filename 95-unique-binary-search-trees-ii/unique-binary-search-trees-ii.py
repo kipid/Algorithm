@@ -6,7 +6,7 @@
 #         self.right = right
 class Solution:
     def generateTrees(self, n: int) -> list[Optional[TreeNode]]:
-        @cache
+        @lru_cache
         def buildtree(left, right):
             if right < left:
                 return [None]
@@ -19,5 +19,5 @@ class Solution:
                         root = TreeNode(nd, ltree, rtree)
                         trees.append(root)
             return trees
-        
+
         return buildtree(1, n)
