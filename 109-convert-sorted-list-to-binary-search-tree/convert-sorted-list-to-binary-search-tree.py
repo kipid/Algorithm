@@ -25,10 +25,5 @@ class Solution:
             return TreeNode(head.val)
         
         mid = getMid(head)
-        root = TreeNode(mid.val)
-
-        leftTree = self.sortedListToBST(head)
-        rightTree = self.sortedListToBST(mid.next)
-        root.left = leftTree
-        root.right = rightTree
+        root = TreeNode(mid.val, self.sortedListToBST(head), self.sortedListToBST(mid.next))
         return root
