@@ -9,8 +9,8 @@ class Solution:
         def helper(left: int, right: int) -> Optional[TreeNode]:
             if left > right:
                 return None
-            # if left == right:
-            #     return TreeNode(nums[left])
+            elif left == right:
+                return TreeNode(nums[left])
             # elif left+1 == right:
             #     return TreeNode(nums[right], TreeNode(nums[left]))
             mid = (left + right) // 2 # 1 ~ 7: 8//2 = 4
