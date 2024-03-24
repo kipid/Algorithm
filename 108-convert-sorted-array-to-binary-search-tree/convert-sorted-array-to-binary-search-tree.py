@@ -13,7 +13,7 @@ class Solution:
             #     return TreeNode(nums[left])
             # elif left+1 == right:
             #     return TreeNode(nums[right], TreeNode(nums[left]))
-            mid = (left + right) // 2
+            mid = (left + right) // 2 # 1 ~ 7: 8//2 = 4
             root = TreeNode(nums[mid], helper(left, mid-1), helper(mid+1, right))
             return root
         
