@@ -13,9 +13,7 @@ class Solution:
                 return None
             
             root = TreeNode(postorder.pop())
-
             index = inorder_index[root.val]
-
             root.right = helper(index+1,r) # right first (postorder)
             root.left = helper(l,index-1)
             return root
