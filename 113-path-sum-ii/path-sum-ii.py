@@ -16,7 +16,7 @@ class Solution:
             path.append(cur.val)
 
             if not cur.left and not cur.right and total == targetSum:
-                res.append(path[:])
+                res.append(path[:]) # shallow copy of path
 
             if cur.left:
                 search(cur.left, total)
