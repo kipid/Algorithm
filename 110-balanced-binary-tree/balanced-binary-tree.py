@@ -6,9 +6,6 @@
 #         self.right = right
 class Solution:
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
-        if not root:
-            return True
-
         def inorder(root: TreeNode, level: int, maxLevel: int) -> (int, bool):
             if not root:
                 return maxLevel, True
