@@ -11,18 +11,17 @@ class Solution:
 
         res = []
         path = []
-        def search(cur, total):
-            total += cur.val
+        def search(cur, sumUntil):
             path.append(cur.val)
 
-            if not cur.left and not cur.right and total == targetSum:
+            if not cur.left and not cur.right and sumUntil == targetSum:
                 res.append(path[:]) # shallow copy of path
 
             if cur.left:
-                search(cur.left, total)
+                search(cur.left, sumUntil+cur.left.val)
             if cur.right:
-                search(cur.right, total)
+                search(cur.right, sumUntil+cur.right.val)
             path.pop()
 
-        search(root, 0)
+        search(root, root.val)
         return res
