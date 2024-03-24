@@ -17,12 +17,12 @@ class Solution:
 
             if not cur.left and not cur.right and total == targetSum:
                 res.append(path[:])
-            
+
             if cur.left:
                 search(cur.left, total)
             if cur.right:
                 search(cur.right, total)
             path.pop()
-        
+
         search(root, 0)
         return res
