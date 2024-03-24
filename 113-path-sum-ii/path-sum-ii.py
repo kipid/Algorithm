@@ -11,7 +11,7 @@ class Solution:
 
         res = []
         path = []
-        def dfs(cur, total):
+        def search(cur, total):
             total += cur.val
             path.append(cur.val)
 
@@ -19,10 +19,10 @@ class Solution:
                 res.append(path[:])
             
             if cur.left:
-                dfs(cur.left, total)
+                search(cur.left, total)
             if cur.right:
-                dfs(cur.right, total)
+                search(cur.right, total)
             path.pop()
         
-        dfs(root, 0)
+        search(root, 0)
         return res
