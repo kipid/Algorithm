@@ -21,6 +21,8 @@ class Solution:
         def helper(left: int, right: int) -> Optional[TreeNode]:
             if left > right:
                 return None
+            elif left == right:
+                return TreeNode(nums[left])
             mid = (left + right) // 2
             return TreeNode(nums[mid], helper(left, mid-1), helper(mid+1, right))
         
