@@ -10,7 +10,7 @@ class Solution:
 
         curr_node_preorder_index = 0
 
-        def buildTree(left, right):
+        def buildTree(left: int, right: int) -> Optional[TreeNode]:
             if left > right:
                 return None
             
