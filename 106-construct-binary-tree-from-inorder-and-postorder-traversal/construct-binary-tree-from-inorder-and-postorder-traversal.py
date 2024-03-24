@@ -6,7 +6,7 @@
 #         self.right = right
 class Solution:
     def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
-        inorder_index = { val:i for i, val in enumerate(inorder)}
+        inorder_index = { val:i for i,val in enumerate(inorder)}
 
         def helper(l,r):
             if l>r:
@@ -16,8 +16,8 @@ class Solution:
 
             index = inorder_index[root.val]
 
-            root.right = helper(index+1,r)
-            root.left = helper(l,index -1 )
+            root.right = helper(index+1,r) # right first (postorder)
+            root.left = helper(l,index-1)
             return root
 
         return helper(0, len(inorder)-1)
