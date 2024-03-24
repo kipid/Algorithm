@@ -6,9 +6,7 @@
 #         self.right = right
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
-        inorder_map = {} # v -> inorder index
-        for i, v in enumerate(inorder):
-            inorder_map[v] = i
+        inorder_map = { v:i for i,v in enumerate(inorder) } # v -> inorder index
 
         curr_node_preorder_index = 0
 
