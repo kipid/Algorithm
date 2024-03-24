@@ -6,14 +6,11 @@
 #         self.right = right
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
-        if len(preorder) == 0:
-            return None
-        
         # Create a hashmap to store the indices of elements in the inorder list
         inorder_map = {val: index for index, val in enumerate(inorder)}
 
         # Define a recursive function to build the binary tree
-        def build(pre_start, pre_end, in_start, in_end):
+        def build(pre_start: int, pre_end: int, in_start: int, in_end: int) -> Optional[TreeNode]:
             # Base case: If the start index in the preorder list is greater than the end index,
             # it indicates that the current subtree is null, so return None
             if pre_start > pre_end:
