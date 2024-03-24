@@ -12,20 +12,16 @@
 class Solution:
     def sortedListToBST(self, head: Optional[ListNode]) -> Optional[TreeNode]:
         def getMid(head):
-            fast = head
-            slow = head
-            prev = None
+            prev, slow, fast = None, head, head
             while fast and fast.next:
-                prev = slow
-                fast = fast.next.next
-                slow = slow.next
+                prev, slow, fast = slow, slow.next, fast.next.next
             if prev:
                 prev.next = None
             return slow
 
-        if not head:
+        if head == None:
             return None
-        if not head.next:
+        elif head.next == None:
             return TreeNode(head.val)
         
         mid = getMid(head)
