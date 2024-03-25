@@ -36,6 +36,8 @@ class TreeNode:
         self.toList(self.nodes[-1])
         self.str_ = ""
         return f"{self.values}\ninorder: {self.inorder(self, '')}"
+    # def __repr__(self):
+    #     return f"TreeNode{{val: {self.val}, left: {self.left}, right: {self.right}}}"
 
 class Solution:
     def generateTrees(self, n: int) -> list[Optional[TreeNode]]:
@@ -56,6 +58,6 @@ class Solution:
         return buildtree(1, n)
 
 sol = Solution()
-lis = sol.generateTrees(11)
+lis = sol.generateTrees(8)
 for li in lis:
     print(f"{li = }")
