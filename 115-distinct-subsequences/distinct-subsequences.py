@@ -14,6 +14,5 @@ class Solution:
                 return count(sIndex-1, tIndex-1) + count(sIndex-1, tIndex)
             else:
                 return count(sIndex-1, tIndex)
-        if s == t:
-            return 1
+
         return count(len(s)-1, len(t)-1)
