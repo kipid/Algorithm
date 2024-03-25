@@ -9,21 +9,14 @@ class Solution:
         """
         Do not return anything, modify root in-place instead.
         """
-        if not root:
-            return None
-
-        preRoot = TreeNode()
-        def preorder(curRoot: TreeNode):
-            nonlocal preRoot
-            newRoot = TreeNode(curRoot.val)
-            preRoot.right = newRoot
-            preRoot = newRoot
-            if curRoot.left:
-                preorder(curRoot.left)
-            if curRoot.right:
-                preorder(curRoot.right)
-
-        savePreRoot = preRoot
-        preorder(root)
-        root.left = None
-        root.right = savePreRoot.right.right
+        def flatten_helper(node):
+            if not node:
+                return None
+            left_tail = flatten_helper(node.left)
+            right_tail = flatten_helper(node.right)
+            if left_tail:
+                left_tail.right = node.right
+                node.right = node.left
+                node.left = None
+            return right_tail if right_tail else left_tail if left_tail else node
+        flatten_helper(root)
