@@ -9,14 +9,12 @@ class Solution:
         """
         Do not return anything, modify root in-place instead.
         """
-        def helper(node):
-            if not node:
-                return None
-            left_tail = helper(node.left)
-            right_tail = helper(node.right)
-            if left_tail:
-                left_tail.right = node.right
-                node.right = node.left
-                node.left = None
-            return right_tail if right_tail else left_tail if left_tail else node
-        helper(root)
+        def pre_order(root: TreeNode):
+            if not root:
+                return []
+            return [root] + pre_order(root.left) + pre_order(root.right)
+        
+        nodes = pre_order(root)
+        for i in range(len(nodes) - 1):
+            nodes[i].left = None
+            nodes[i].right = nodes[i+1]
