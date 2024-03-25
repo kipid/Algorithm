@@ -12,25 +12,13 @@ class Solution:
     def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
         if not root:
             return root
-
-        rowNodes = [[root]]
-
-        def nextLevel(preNodes: List[TreeNode]) -> bool:
-            nextNodes = []
-            for preNode in preNodes:
-                if preNode.left:
-                    nextNodes.append(preNode.left)
-                if preNode.right:
-                    nextNodes.append(preNode.right)
-            if len(nextNodes) > 0:
-                rowNodes.append(nextNodes)
-                return True
-            else:
-                return False
-        
-        while nextLevel(rowNodes[-1]):
-            pass
-        for rowNode in rowNodes:
-            for i in range(len(rowNode)-1):
-                rowNode[i].next = rowNode[i+1]
+        curr = root
+        while curr:
+            prev, next = None, curr
+            while next and next.left:
+                next.left.next = next.right
+                if prev:
+                    prev.right.next = next.left
+                prev, next = next, next.next
+            curr = curr.left
         return root
