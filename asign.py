@@ -11,4 +11,4 @@ class Node:
 c=Node(0, Node(2), Node(3), Node(4))
 d=Node(1)
 d = d.next = c.left
-print(f"{c.val=},\n{d.val=}\n{c.next.val=}")
+print(f"{c.left.val=},\n{d.val=}\n{c.next.val=}")
