@@ -1,12 +1,12 @@
 class Solution:
     def findLadders(self, beginWord: str, endWord: str, wordList: List[str]) -> List[List[str]]:
+        if endWord not in wordList:
+            return []
+
         d = defaultdict(list)
         for word in wordList:
             for i in range(len(word)):
                 d[word[:i] + "*" + word[i + 1:]].append(word)
-
-        if endWord not in wordList:
-            return []
 
         visited1 = defaultdict(list)
         q1 = deque([beginWord])
