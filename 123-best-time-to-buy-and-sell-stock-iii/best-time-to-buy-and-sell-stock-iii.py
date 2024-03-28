@@ -1,7 +1,7 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         # Initialize variables to track the profits
-        first_buy, second_buy = float('inf'), float('inf')
+        first_buy, second_buy = math.inf, math.inf
         first_profit, second_profit = 0, 0
 
         for price in prices:
