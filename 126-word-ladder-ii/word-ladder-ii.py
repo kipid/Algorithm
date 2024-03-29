@@ -31,6 +31,7 @@ class Solution:
 
         def bfs(q, visited1, visited2, frombegin):
             level_visited = defaultdict(list)
+            print(f"{q = },\n{visited1 = },\n{visited2 = },\n{frombegin =}")
             for _ in range(len(q)):
                 u = q.popleft()
 
