@@ -1,9 +1,13 @@
+import re
+
 # with open("Lorem ipsum.txt") as lorem_file:
 # 	items = lorem_file.read().split()
 # 	print(items)
 
-str = "Hello Hello replace test Hello"
+
+str = "Hello  Hello    replace    test   Hello\n\n   Hello  \t  kipid"
 print(f"{str.split(" ") = }")
+print(f"{str.split() = }") # ['Hello', 'Hello', 'replace', 'test', 'Hello', 'Hello', 'kipid']
 print(str.replace("Hello", "Halo")) # replace All.
 
 l = ['Bryan', 'Cat', 28]
