@@ -5,9 +5,9 @@ class Solution:
 
         # If current sum is too small, move closer to the right
         # If current sum is too large, move closer to the left
-        while numbers[i] + numbers[j] != target:
-            if numbers[i] + numbers[j] < target:
+        while (sum_ := numbers[i] + numbers[j]) != target:
+            if sum_ < target:
                 i += 1
-            elif numbers[i] + numbers[j] > target:
+            else:
                 j -= 1
         return [i + 1, j + 1]
