@@ -8,21 +8,6 @@ class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
         if not root:
             return 0
-        res = 1
-        nodes = [[root]]
-
-        def nextLevel(preNodes: List[TreeNode]) -> bool:
-            nextNodes = []
-            for preNode in preNodes:
-                if preNode.left:
-                    nextNodes.append(preNode.left)
-                if preNode.right:
-                    nextNodes.append(preNode.right)
-            if len(nextNodes) > 0:
-                nodes.append(nextNodes)
-                return True
-            return False
-        
-        while nextLevel(nodes[-1]):
-            res += 1
-        return res
+        left=self.maxDepth(root.left)
+        right=self.maxDepth(root.right)
+        return max(left,right)+1
