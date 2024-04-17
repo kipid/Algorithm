@@ -5,6 +5,8 @@ class Solution:
         for num in nums:
             if count == 0:
                 elem = num
+                count += 1
+                continue
             if elem == num:
                 count += 1
             else:
