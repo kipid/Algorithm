@@ -10,4 +10,4 @@ class Solution:
             res[i] *= right
             right *= nums[i]
 
-        return res 
+        return res
