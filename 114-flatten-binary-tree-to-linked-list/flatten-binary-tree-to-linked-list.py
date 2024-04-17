@@ -15,6 +15,7 @@ class Solution:
             return [root] + pre_order(root.left) + pre_order(root.right)
         
         nodes = pre_order(root)
+        print(f"{root = }")
         for i in range(len(nodes) - 1):
             nodes[i].left = None
             nodes[i].right = nodes[i+1]
