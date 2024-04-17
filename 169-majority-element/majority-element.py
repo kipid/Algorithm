@@ -1,9 +1,12 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        numDict = dict();
+        count = 0
+        elem = 0
         for num in nums:
-            numDict[num] = numDict.get(num, 0) + 1
-        maxCount = len(nums) // 2;
-        for num in numDict:
-            if numDict[num] > maxCount:
-                return num
+            if count == 0:
+                elem = num
+            if elem == num:
+                count += 1
+            else:
+                count -= 1
+        return elem
