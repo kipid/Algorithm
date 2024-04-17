@@ -6,6 +6,7 @@ print(f'{re.split(r"0", "123")}') # ['123']
 print(f'{re.split(r"0", "0")}') # ['', '']
 print(f'{re.split(r"0", "")}') # ['']
 print(f'{re.split(r"0", "01230")}') # ['', '123', '']
+print(f'{re.split(r"\s+", "01  23   0, split   etset")}') # ['01', '23', '0,', 'split', 'etset']
 print()
 
 pattern = re.compile("^[A-Z]+$")
