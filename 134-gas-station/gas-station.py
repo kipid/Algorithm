@@ -7,5 +7,6 @@ class Solution:
         for i in range(n):
             tank += gas[i] - cost[i]
             if tank < 0:
-                tank, idx = 0, i+1
+                tank = 0
+                idx = i+1
         return idx
