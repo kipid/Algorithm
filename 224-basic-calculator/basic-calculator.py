@@ -1,5 +1,3 @@
-import re
-
 class Solution:
     def calculate(self, s: str) -> int:
         def evaluate(k):
