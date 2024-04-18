@@ -24,7 +24,7 @@ class Solution:
                     curVal += sign * digit
                     digit = 0
                     sign = 1
-                elif s[k].isdigit():
+                else:
                     digit = digit * 10 + int(s[k])
                 k += 1
             return curVal + sign * digit
