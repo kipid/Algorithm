@@ -1,29 +1,27 @@
 class Solution:
     def calculate(self, s: str) -> int:
-        def evaluate(k):
-            curVal = 0
-            digit = 0
-            sign = 1
-            while k < len(s):
-                if s[k] == " ":
-                    k += 1
-                    continue
-                elif s[k] == "(":
-                    subVal, k = evaluate(k+1)
-                    curVal += sign * subVal
-                elif s[k] == ")":
-                    curVal += sign*digit
-                    return curVal, k
-                elif s[k] == "-":
-                    curVal += sign * digit
-                    digit = 0
-                    sign = -1
-                elif s[k] == "+":
-                    curVal += sign * digit
-                    digit = 0
-                    sign = 1
-                else:
-                    digit = digit * 10 + int(s[k])
-                k += 1
-            return curVal + sign * digit
-        return evaluate(0)
+        curr, res, sign = 0, 0, 1
+        stack = [] # (res, sign)
+
+        for c in s:
+            # print("----")
+            # print(c)
+            if c == ' ':
+                continue
+            if c == "(":
+                stack.append((res, sign))
+                curr, res, sign = 0, 0, 1
+            elif c == ")":
+                res += curr * sign
+                prev_res, prev_sign = stack.pop()
+                res = prev_res + prev_sign * res
+                curr, sign = 0, 1
+            elif c in ["+", "-"]:
+                res += curr * sign
+                sign = 1 if c == "+" else -1
+                curr = 0
+            else:
+                curr = curr * 10 + int(c)
+            # print(curr, res, sign)
+        res += curr * sign
+        return res
