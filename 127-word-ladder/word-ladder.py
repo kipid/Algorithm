@@ -1,12 +1,3 @@
-class Ladder:
-    def __init__(self, beginWord = "", count = 1, anotherLadder = None):
-        if isinstance(anotherLadder, self.__class__):
-            self.curr = anotherLadder.curr
-            self.count = anotherLadder.count
-        else:
-            self.curr = beginWord
-            self.count = count
-
 class Solution:
     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
         if endWord not in wordList:
@@ -20,19 +11,16 @@ class Solution:
                 ladderDict[word[:i-1]+"*"+word[i:]].append(word)
         # print(f"{ladderDict = }")
         visited = set([beginWord])
-        q = deque([Ladder(beginWord)])
+        q = deque([(beginWord, 1)])
         while q:
-            ladder = q.popleft()
-            if ladder.curr == endWord:
-                return ladder.count
+            curr, count = q.popleft()
+            if curr == endWord:
+                return count
             for i in range(1, n + 1):
-                for word in ladderDict[ladder.curr[:i-1]+"*"+ladder.curr[i:]]:
+                for word in ladderDict[curr[:i-1]+"*"+curr[i:]]:
                     if word not in visited:
                         if word == endWord:
-                            return ladder.count + 1
-                        newLadder = Ladder(anotherLadder = ladder)
-                        newLadder.curr = word
+                            return count + 1
                         visited.add(word)
-                        newLadder.count += 1
-                        q.append(newLadder)
+                        q.append((word, count + 1))
         return 0
