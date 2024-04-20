@@ -3,43 +3,32 @@ class Solution:
         """
         Do not return anything, modify board in-place instead.
         """
-        o = "O"
+        rows, cols = len(board), len(board[0])
         
-        n = len(board) 
-        m = len(board[0])
-
-        Q = deque()
+        def capture(r, c):
+            if r < 0 or c < 0 or r >= rows or c >= cols or board[r][c] != "O":
+                return
+            board[r][c] = "T"  # Temporarily mark as 'T'
+            # Recursively capture adjacent cells
+            capture(r + 1, c)
+            capture(r - 1, c)
+            capture(r, c + 1)
+            capture(r, c - 1)
         
-        for i in range(n):
-            if board[i][0] == o:
-                Q.append((i,0))
-            if board[i][m-1] == o:
-                Q.append((i, m-1))
-                
-        for j in range(m):
-            if board[0][j] == o:
-                Q.append((0,j))
-            if board[n-1][j] == o:
-                Q.append((n-1, j))
-                
-        def inBounds(i,j):
-            return (0 <= i < n) and (0 <= j < m)
-                
-        while Q:
-            i,j = Q.popleft()
-            board[i][j] = "#"
-            
-            for ii, jj in [(i+1, j), (i-1, j), (i, j+1), (i, j-1)]:
-                if not inBounds(ii, jj):
-                    continue
-                if board[ii][jj] != o:
-                    continue
-                Q.append((ii,jj))
-                board[ii][jj] = '#'
-            
-        for i in range(n):
-            for j in range(m):
-                if board[i][j] == o:
-                    board[i][j] = 'X'
-                elif board[i][j] == '#':
-                    board[i][j] = o
+        # Capture all 'O' regions connected to the border
+        for r in range(rows):
+            for c in range(cols):
+                if (board[r][c] == "O" and (r == 0 or r == rows - 1 or c == 0 or c == cols - 1)):
+                    capture(r, c)
+        
+        # Flip remaining 'O' cells to 'X'
+        for r in range(rows):
+            for c in range(cols):
+                if board[r][c] == "O":
+                    board[r][c] = "X"  # Convert 'O' to 'X'
+        
+        # Convert 'T' cells back to 'O'
+        for r in range(rows):
+            for c in range(cols):
+                if board[r][c] == "T":
+                    board[r][c] = "O"  # Convert back from 'T' to 'O'
