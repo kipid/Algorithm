@@ -8,7 +8,7 @@ class Trie:
             if letter not in cur:
                 cur[letter] = {}
             cur = cur[letter]
-        cur['isWord'] = True
+        cur['isWord'] = word
     
     def remove(self, word: str) -> bool:
         cur = self.root
@@ -52,47 +52,30 @@ class Solution:
             trie.insert(word)
         m = len(board)
         n = len(board[0])
-        boolBoard = [[True] * (n+2) for _ in range(m+2)]
-        for j in range(n+2):
-            boolBoard[m][j] = False
-            boolBoard[-1][j] = False
-        for i in range(m+2):
-            boolBoard[i][n] = False
-            boolBoard[i][-1] = False
-        
-        def boolCopy(boolBoard: List[List[bool]]) -> List[List[bool]]:
-            boolBoardCopy = []
-            for i in range(m+2):
-                row = []
-                for j in range(n+2):
-                    row.append(boolBoard[i][j])
-                boolBoardCopy.append(row)
-            return boolBoardCopy
-        
+
         res = set()
         moves = [(0,1), (1,0), (0,-1), (-1,0)]
         
-        def dfs(row, col, cur, str_, boolBoard):
-            if cur:
+        def dfs(row, col, cur):
+            letter = board[row][col]
+            board[row][col] = ""
+            if letter in cur:
+                cur = cur[letter]
                 if 'isWord' in cur:
-                    res.add(str_)
-                    trie.remove(str_)
-                for dr, dc in moves:
-                    r, c = row+dr, col+dc
-                    if boolBoard[r][c]:
-                        if board[r][c] in cur:
-                            boolBoard[r][c] = False
-                            dfs(r, c, cur[board[r][c]], str_ + board[r][c], boolCopy(boolBoard))
-                            boolBoard[r][c] = True
-                cur = False
-        
+                    res.add(cur['isWord'])
+                    trie.remove(cur['isWord'])
+                if row > 0:
+                    dfs(row-1, col, cur)
+                if row < m-1:
+                    dfs(row+1, col, cur)
+                if col > 0:
+                    dfs(row, col-1, cur)
+                if col < n-1:
+                    dfs(row, col+1, cur)
+            board[row][col] = letter
+
         for i in range(m):
             for j in range(n):
-                boolBoardCopy = boolCopy(boolBoard)
-                row = i
-                col = j
-                str_ = board[row][col]
-                if (cur := trie.startsWith(str_)):
-                    boolBoardCopy[row][col] = False
-                    dfs(row, col, cur, str_, boolBoardCopy)
+                dfs(i, j, trie.root)
+                    
         return res
