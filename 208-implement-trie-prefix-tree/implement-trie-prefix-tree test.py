@@ -9,8 +9,8 @@ class Trie:
             if letter not in cur:
                 cur[letter]={}
             cur=cur[letter]
-        cur['isWord']=''
-        print(f"insert :: {self.root = }")
+        cur['isWord']=word
+        # print(f"insert :: {self.root = }")
 
     def remove(self, word: str) -> bool:
         cur=self.root
@@ -26,11 +26,11 @@ class Trie:
         while stack:
             if len(cur)==0:
                 cur, letter = stack.pop()
-                print(f"len(cur)==0, {cur = }, {letter = }")
+                # print(f"len(cur)==0, {cur = }, {letter = }")
                 del cur[letter]
             else:
                 break
-        print(f"remove :: {self.root = }")
+        # print(f"remove :: {self.root = }")
         return res
 
     def search(self, word: str) -> bool:
@@ -56,7 +56,7 @@ obj = Trie()
 for word in words:
     obj.insert(word)
 # obj.remove("aaaaa")
-print(f"{obj.remove('apple') = }")
+# print(f"{obj.remove('apple') = }")
 obj.remove("aaa")
 obj.remove("aa")
 obj.remove("a")
