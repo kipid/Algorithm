@@ -54,7 +54,6 @@ class Solution:
         n = len(board[0])
 
         res = set()
-        moves = [(0,1), (1,0), (0,-1), (-1,0)]
         
         def dfs(row, col, cur):
             letter = board[row][col]
