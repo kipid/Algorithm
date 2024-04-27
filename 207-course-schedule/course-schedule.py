@@ -1,27 +1,29 @@
 class Solution:
-    def canFinish(self, n: int, prerequisites: List[List[int]]) -> bool:
-        adj = [[] for _ in range(n)]
-        indegree = [0] * n
-        ans = []
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        prereqs = { crs: [] for crs in range(numCourses) }
+        
+        for crs, pre in prerequisites:
+            prereqs[crs].append(pre)
 
-        for pair in prerequisites:
-            course = pair[0]
-            prerequisite = pair[1]
-            adj[prerequisite].append(course)
-            indegree[course] += 1
+        completed = set()
+        cycle = set()
 
-        queue = deque()
-        for i in range(n):
-            if indegree[i] == 0:
-                queue.append(i)
+        def dfs(crs):
+            if crs in completed:
+                return True
+            
+            if crs in cycle: 
+                return False
 
-        while queue:
-            current = queue.popleft()
-            ans.append(current)
+            cycle.add(crs)
+            for pre in prereqs[crs]:
+                if not dfs(pre):
+                    return False
+            cycle.remove(crs)
+            completed.add(crs)
+            return True
 
-            for next_course in adj[current]:
-                indegree[next_course] -= 1
-                if indegree[next_course] == 0:
-                    queue.append(next_course)
-
-        return len(ans) == n
+        for crs in range(numCourses):
+            if not dfs(crs):
+                return False
+        return True
