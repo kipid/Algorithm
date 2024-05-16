@@ -10,4 +10,4 @@ class Solution:
                 minlen = min(minlen, r-l+1)
                 curSum -= nums[l]
                 l+=1
-        return minlen if minlen != float('inf') else 0
+        return minlen if minlen != math.inf else 0
