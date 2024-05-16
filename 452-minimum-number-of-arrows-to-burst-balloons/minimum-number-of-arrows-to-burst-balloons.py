@@ -1,22 +1,12 @@
 class Solution:
     def findMinArrowShots(self, points: List[List[int]]) -> int:
-        points.sort()
-        print(f"{points = }")
-        intersections = []
-        
-        def findIntersection(p1: List[int], p2: List[int]) -> List[int]:
-            intersection = [max(p1[0], p2[0]), min(p1[1], p2[1])]
-            if intersection[0] > intersection[1]:
-                return None
-            return intersection
-
-        intersections.append(points[0])
-        i = 1
-        while i < len(points):
-            intersection = findIntersection(intersections[-1], points[i])
-            if intersection:
-                intersections[-1] = intersection
-            else:
-                intersections.append(points[i])
-            i += 1
-        return len(intersections)
+        arrows = 1
+        points.sort(key = lambda x:x[1])
+        first_end = points[0][1]
+        # this is to count non-overlapping intervals:
+        # so it doesn't matter if you use points[1:] or points
+        for start, end in points[1:]:
+            if start > first_end:
+                first_end = end
+                arrows +=1
+        return arrows
