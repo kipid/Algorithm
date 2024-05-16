@@ -6,6 +6,4 @@ class Solution:
                 if i - window[num] <= k:
                     return True
             window[num] = i
-
-
         return False
