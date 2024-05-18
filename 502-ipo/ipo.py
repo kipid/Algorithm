@@ -10,10 +10,10 @@ class Solution:
         
         for i in range(k):
             while projects and projects[0][0] <= w:
-                heappush(heap, -projects.pop(0)[1])
+                heappush(heap, -projects.pop(0)[1]) # -를 넣어서 최대값이 처음으로 오도록 heapify.
             
             if not heap:
                 break
-            p = -heappop(heap)
+            p = -heappop(heap) # capital 이 w 한도내의 최대 profit.
             w += p
         return w
