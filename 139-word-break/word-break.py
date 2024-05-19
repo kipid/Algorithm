@@ -1,18 +1,11 @@
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
-        def helper(curr: str, memo={}) -> bool:
-            if curr in memo:
-                return memo[curr]
-            if not curr:
-                return True
-            
+        can_break = [False] * (len(s) + 1)
+        can_break[0] = True
+        for start in range(len(s) + 1):
+            if not can_break[start]:
+                continue
             for word in wordDict:
-                if curr.startswith(word):
-                    nxt = curr[len(word):]
-                    if helper(nxt, memo):
-                        memo[curr] = True
-                        return True
-            memo[curr] = False
-            return False
-        
-        return helper(s)
+                if s.startswith(word, start):
+                    can_break[start + len(word)] = True
+        return can_break[len(s)]
