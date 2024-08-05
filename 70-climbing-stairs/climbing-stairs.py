@@ -1,12 +1,8 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
-        # climbStairs(n) = climbStairs(n-1) + climbStairs(n-2)
-        # if n == 1:
-        #     return 1
-        # if n == 2:
-        #     return 2
-        # return self.climbStairs(n-1) + self.climbStairs(n-2)
-        res = [0, 1, 2]
-        for i in range(3, n+1):
-            res.append(res[-1] + res[-2])
-        return res[n]
+        climbStairsSteps = [0, 1, 2]
+        if n < 3:
+            return climbStairsSteps[n]
+        for i in range(3, n + 1):
+            climbStairsSteps.append(climbStairsSteps[i - 1] + climbStairsSteps[i - 2])
+        return climbStairsSteps[n]
