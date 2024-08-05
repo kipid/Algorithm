@@ -2,13 +2,15 @@
  * @param {number} n
  * @return {number}
  */
-const climbStairsRes = [0, 1, 2];
-function climbStairs(n) {
-    if (climbStairsRes[n]) {
-        return climbStairsRes[n];
+const climbStairsSteps = [0, 1, 2]
+const climbStairs = function(n) {
+    if (climbStairsSteps[n]) {
+        return climbStairsSteps[n];
     }
-    for (let i = 3; i <= n; i++) {
-        climbStairsRes[i] = climbStairs(i-1) + climbStairs(i-2);
+    else {
+        for (let i = 3; i <= n; i++) {
+            climbStairsSteps[i] = climbStairsSteps[i-1] + climbStairsSteps[i-2];
+        }
+        return climbStairsSteps[n];
     }
-    return climbStairsRes[n];
 };
