@@ -1,11 +1,11 @@
 function longestCommonPrefix(strs: string[]): string {
-    let minLength = Infinity;
+    let minLength: number = Infinity;
     for (let str of strs) {
         minLength = Math.min(minLength, str.length);
     }
     for (let i = 0; i < minLength; i++) {
-        let letter = strs[0].charAt(i);
-        let same = true;
+        let letter: string = strs[0].charAt(i);
+        let same: boolean = true;
         for (let j = 1; j < strs.length; j++) {
             if (letter !== strs[j].charAt(i)) {
                 same = false;
