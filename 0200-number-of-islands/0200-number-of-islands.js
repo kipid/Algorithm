@@ -27,23 +27,23 @@ const numIslands = function(grid) {
     const linkLands = function (i, j) {
         if (extendedGrid[i][j] === "1") {
             numOfLands++;
-            extendedGrid[i][j] = `land-${numOfLands}`;
+            extendedGrid[i][j] = `L${numOfLands}`;
         }
-        if (extendedGrid[i][j].startsWith("land-")) {
+        if (extendedGrid[i][j].startsWith("L")) {
             if (extendedGrid[i-1][j] === "1") {
-                extendedGrid[i-1][j] = `land-${numOfLands}`;
+                extendedGrid[i-1][j] = `L${numOfLands}`;
                 linkLands(i-1, j);
             }
             if (extendedGrid[i][j+1] === "1") {
-                extendedGrid[i][j+1] = `land-${numOfLands}`;
+                extendedGrid[i][j+1] = `L${numOfLands}`;
                 linkLands(i, j+1);
             }
             if (extendedGrid[i+1][j] === "1") {
-                extendedGrid[i+1][j] = `land-${numOfLands}`;
+                extendedGrid[i+1][j] = `L${numOfLands}`;
                 linkLands(i+1, j);
             }
             if (extendedGrid[i][j-1] === "1") {
-                extendedGrid[i][j-1] = `land-${numOfLands}`;
+                extendedGrid[i][j-1] = `L${numOfLands}`;
                 linkLands(i, j-1);
             }
         }
