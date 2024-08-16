@@ -4,24 +4,21 @@
  */
 const numIslands = function(grid) {
     const extendedGrid = [];
-    const rowTop = [];
-    const rowBottom = [];
+    const rowTop = ["0"];
+    const rowBottom = ["0"];
     for (let i = 0; i < grid[0].length; i++) {
-        rowTop[i] = "0";
-        rowBottom[i] = "0";
+        rowTop[i+1] = "0";
+        rowBottom[i+1] = "0";
     }
-    rowTop.splice(0, 0, "0");
-    rowTop.splice(rowTop.length, 0, "0");
-    rowBottom.splice(0, 0, "0");
-    rowBottom.splice(rowBottom.length, 0, "0");
+    rowTop.push("0");
+    rowBottom.push("0");
     extendedGrid.push(rowTop);
     for (let i = 0; i < grid.length; i++) {
-        let row = [];
+        let row = ["0"];
         for (let j = 0; j < grid[i].length; j++) {
-            row[j] = grid[i][j];
+            row[j+1] = grid[i][j];
         }
-        row.splice(0, 0, "0");
-        row.splice(row.length, 0, "0");
+        row.push("0");
         extendedGrid.push(row);
     }
     extendedGrid.push(rowBottom);
