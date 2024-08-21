@@ -52,4 +52,16 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0200-number-of-islands](https://github.com/kipid/Algorithm/tree/master/0200-number-of-islands) |
+## Hash Table
+|  |
+| ------- |
+| [2413-smallest-number-in-infinite-set](https://github.com/kipid/Algorithm/tree/master/2413-smallest-number-in-infinite-set) |
+## Design
+|  |
+| ------- |
+| [2413-smallest-number-in-infinite-set](https://github.com/kipid/Algorithm/tree/master/2413-smallest-number-in-infinite-set) |
+## Heap (Priority Queue)
+|  |
+| ------- |
+| [2413-smallest-number-in-infinite-set](https://github.com/kipid/Algorithm/tree/master/2413-smallest-number-in-infinite-set) |
 <!---LeetCode Topics End-->
