@@ -1,4 +1,3 @@
-# Google Chrome	123.0.6312.123 (공식 빌드) (64비트) (cohort: Stable)
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
