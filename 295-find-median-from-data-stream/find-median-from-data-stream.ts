@@ -70,8 +70,8 @@ class PriorityQueue0 {
 
 // MedianFinder 클래스
 class MedianFinder {
-    private small; // 최대 힙
-    private large; // 최소 힙
+    private small: PriorityQueue0; // 최대 힙
+    private large: PriorityQueue0; // 최소 힙
 
     constructor() {
         this.small = new PriorityQueue0(true);  // 최대 힙
