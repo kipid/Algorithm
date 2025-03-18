@@ -1,18 +1,8 @@
 function countBits(n: number): number[] {
-    const singleCountBits = (k: number): number => {
-        let w = k % 2;
-        let sum = w;
-        k = (k - w) / 2;
-        while (k > 0) {
-            w = k % 2;
-            sum += w;
-            k = (k - w) / 2;
-        }
-        return sum;
+    const ans = new Array(n+1).fill(0);
+
+    for (let i = 1; i <= n; i++) {
+        ans[i] = ans[i >> 1] + (i & 1);
     }
-    const res = [];
-    for (let i = 0; i <= n; i++) {
-        res.push(singleCountBits(i));
-    }
-    return res;
+    return ans;
 };
