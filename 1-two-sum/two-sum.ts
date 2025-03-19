@@ -5,9 +5,10 @@ function twoSum(nums: number[], target: number): number[] {
         map.set(nums[i], i);
     }
     for (let i = 0; i < n-1; i++) {
-        if (map.has(target - nums[i])) {
-            if (i !== map.get(target - nums[i])) {
-                return [i, map.get(target - nums[i])];
+        const anotherNum = target - nums[i];
+        if (map.has(anotherNum)) {
+            if (i !== map.get(anotherNum)) {
+                return [i, map.get(anotherNum)];
             }
         }
     }
