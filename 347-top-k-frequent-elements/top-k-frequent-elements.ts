@@ -10,11 +10,6 @@ function topKFrequent(nums: number[], k: number): number[] {
         }
     }
     const arrays = Array.from(counts.entries());
-    console.log(arrays);
     arrays.sort((a, b) => b[1] - a[1]);
-    const res = [];
-    for (let i = 0; i < k; i++) {
-        res.push(arrays[i][0]);
-    }
-    return res;
+    return arrays.slice(0, k).map(([num]) => num);
 };
